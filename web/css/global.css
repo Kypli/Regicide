@@ -1,0 +1,10 @@
+.bgb {
+    color: red;
+    background-color: #d0e4fe;
+}
+
+body {
+    background-image: url('../assets/image/background/blueBar.png');
+    background-repeat: repeat;
+    background-color: #d0e4fe;
+}
