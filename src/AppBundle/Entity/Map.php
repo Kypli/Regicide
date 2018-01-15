@@ -1,0 +1,292 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Map
+ *
+ * @ORM\Table(name="map")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MapRepository")
+ */
+class Map
+{
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personage", inversedBy="mapPersonage")
+     */
+    private $personage;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Province", inversedBy="provinceMap")
+     */
+    private $province;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MapType", inversedBy="map")
+     */
+    private $mapType;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Building", mappedBy="location")
+     */
+    private $locationMap;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="areaX", type="integer")
+     */
+    private $areaX;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="areaY", type="integer")
+     */
+    private $areaY;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="presence", type="integer")
+     */
+    private $presence;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="level", type="integer")
+     */
+    private $level;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="quality", type="integer")
+     */
+    private $quality;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="owner", type="string", length=255)
+     */
+    private $owner;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set areaX
+     *
+     * @param integer $areaX
+     *
+     * @return Map
+     */
+    public function setAreaX($areaX)
+    {
+        $this->areaX = $areaX;
+
+        return $this;
+    }
+
+    /**
+     * Get areaX
+     *
+     * @return int
+     */
+    public function getAreaX()
+    {
+        return $this->areaX;
+    }
+
+    /**
+     * Set areaY
+     *
+     * @param integer $areaY
+     *
+     * @return Map
+     */
+    public function setAreaY($areaY)
+    {
+        $this->areaY = $areaY;
+
+        return $this;
+    }
+
+    /**
+     * Get areaY
+     *
+     * @return int
+     */
+    public function getAreaY()
+    {
+        return $this->areaY;
+    }
+
+    /**
+     * Set presence
+     *
+     * @param integer $presence
+     *
+     * @return Map
+     */
+    public function setPresence($presence)
+    {
+        $this->presence = $presence;
+
+        return $this;
+    }
+
+    /**
+     * Get presence
+     *
+     * @return int
+     */
+    public function getPresence()
+    {
+        return $this->presence;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Map
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set level
+     *
+     * @param integer $level
+     *
+     * @return Map
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * Set quality
+     *
+     * @param integer $quality
+     *
+     * @return Map
+     */
+    public function setQuality($quality)
+    {
+        $this->quality = $quality;
+
+        return $this;
+    }
+
+    /**
+     * Get quality
+     *
+     * @return int
+     */
+    public function getQuality()
+    {
+        return $this->quality;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param string $owner
+     *
+     * @return Map
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return string
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * Set locationMap
+     *
+     * @param \AppBundle\Entity\Building $locationMap
+     *
+     * @return Map
+     */
+    public function setLocationMap(\AppBundle\Entity\Building $locationMap = null)
+    {
+        $this->locationMap = $locationMap;
+
+        return $this;
+    }
+
+    /**
+     * Get locationMap
+     *
+     * @return \AppBundle\Entity\Building
+     */
+    public function getLocationMap()
+    {
+        return $this->locationMap;
+    }
+}
