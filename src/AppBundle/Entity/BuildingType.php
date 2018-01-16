@@ -100,9 +100,9 @@ class BuildingType
     /**
      * @var int
      *
-     * @ORM\Column(name="maxLevel", type="integer")
+     * @ORM\Column(name="level", type="integer")
      */
-    private $maxLevel;
+    private $level;
 
     /**
      * @var int
@@ -384,27 +384,27 @@ class BuildingType
     }
 
     /**
-     * Set maxLevel
+     * Set level
      *
-     * @param integer $maxLevel
+     * @param integer $level
      *
      * @return BuildingType
      */
-    public function setMaxLevel($maxLevel)
+    public function setLevel($level)
     {
-        $this->maxLevel = $maxLevel;
+        $this->level = $level;
 
         return $this;
     }
 
     /**
-     * Get maxLevel
+     * Get level
      *
      * @return int
      */
-    public function getMaxLevel()
+    public function getLevel()
     {
-        return $this->maxLevel;
+        return $this->level;
     }
 
     /**

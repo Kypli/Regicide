@@ -37,6 +37,12 @@ class Map
     private $locationMap;
 
     /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\BuildingInside", mappedBy="locationInside")
+     */
+    private $locationMapInside;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -288,6 +294,30 @@ class Map
     public function getLocationMap()
     {
         return $this->locationMap;
+    }
+
+    /**
+     * Set locationMapInside
+     *
+     * @param \AppBundle\Entity\BuildingInside $locationMapInside
+     *
+     * @return Map
+     */
+    public function setLocationMapInside(\AppBundle\Entity\Building $locationMapInside = null)
+    {
+        $this->locationMapInside = $locationMapInside;
+
+        return $this;
+    }
+
+    /**
+     * Get locationMapInside
+     *
+     * @return \AppBundle\Entity\BuildingInside
+     */
+    public function getLocationMapInside()
+    {
+        return $this->locationMapInside;
     }
 
     /**

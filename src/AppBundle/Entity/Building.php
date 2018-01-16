@@ -43,16 +43,16 @@ class Building
     /**
      * @var int
      *
-     * @ORM\Column(name="level", type="integer")
+     * @ORM\Column(name="quality", type="integer")
      */
-    private $level;
+    private $quality;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="quality", type="integer")
+     * @ORM\Column(name="construction", type="integer")
      */
-    private $quality;
+    private $construction;
 
     /**
      * @var int
@@ -166,30 +166,6 @@ class Building
     }
 
     /**
-     * Set level
-     *
-     * @param integer $level
-     *
-     * @return Building
-     */
-    public function setLevel($level)
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
-    /**
-     * Get level
-     *
-     * @return int
-     */
-    public function getLevel()
-    {
-        return $this->level;
-    }
-
-    /**
      * Set quality
      *
      * @param integer $quality
@@ -211,6 +187,31 @@ class Building
     public function getQuality()
     {
         return $this->quality;
+    }
+
+
+    /**
+     * Set construction
+     *
+     * @param integer $construction
+     *
+     * @return Building
+     */
+    public function setConstruction($construction)
+    {
+        $this->construction = $construction;
+
+        return $this;
+    }
+
+    /**
+     * Get construction
+     *
+     * @return int
+     */
+    public function getConstruction()
+    {
+        return $this->construction;
     }
 
     /**

@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Clan
 {
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClanRank", mappedBy="clan")
+     */
+    private $clanRank;
+
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="clan")
@@ -68,6 +75,7 @@ class Clan
     {
         return $this->name;
     }
+
     /**
      * Constructor
      */
@@ -108,5 +116,29 @@ class Clan
     public function getPersonageClan()
     {
         return $this->personageClan;
+    }
+
+    /**
+     * Set clanRank
+     *
+     * @param \AppBundle\Entity\ClanRank $clanRank
+     *
+     * @return Clan
+     */
+    public function setClanRank(\AppBundle\Entity\ClanRank $clanRank = null)
+    {
+        $this->clanRank = $clanRank;
+
+        return $this;
+    }
+
+    /**
+     * Get clanRank
+     *
+     * @return \AppBundle\Entity\ClanRank
+     */
+    public function getClanRank()
+    {
+        return $this->clanRank;
     }
 }
