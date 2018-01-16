@@ -557,4 +557,38 @@ class BuildingType
     {
         $this->buildingType->removeElement($buildingType);
     }
+
+    /**
+     * Add building
+     *
+     * @param \AppBundle\Entity\Building $building
+     *
+     * @return BuildingType
+     */
+    public function addBuilding(\AppBundle\Entity\Building $building)
+    {
+        $this->building[] = $building;
+
+        return $this;
+    }
+
+    /**
+     * Remove building
+     *
+     * @param \AppBundle\Entity\Building $building
+     */
+    public function removeBuilding(\AppBundle\Entity\Building $building)
+    {
+        $this->building->removeElement($building);
+    }
+
+    /**
+     * Get building
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBuilding()
+    {
+        return $this->building;
+    }
 }

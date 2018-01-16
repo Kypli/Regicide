@@ -13,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Province
 {
     /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Weather", inversedBy="provinceWeather")
+     */
+    private $weather;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Map", mappedBy="province")
+     */
+    private $provinceMap;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -34,13 +46,6 @@ class Province
      * @ORM\Column(name="nickname", type="string", length=255, unique=true)
      */
     private $nickname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="weather", type="string", length=255)
-     */
-    private $weather;
 
     /**
      * @var int
@@ -216,5 +221,46 @@ class Province
     public function getLimitY()
     {
         return $this->limitY;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->provinceMap = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add provinceMap
+     *
+     * @param \AppBundle\Entity\Map $provinceMap
+     *
+     * @return Province
+     */
+    public function addProvinceMap(\AppBundle\Entity\Map $provinceMap)
+    {
+        $this->provinceMap[] = $provinceMap;
+
+        return $this;
+    }
+
+    /**
+     * Remove provinceMap
+     *
+     * @param \AppBundle\Entity\Map $provinceMap
+     */
+    public function removeProvinceMap(\AppBundle\Entity\Map $provinceMap)
+    {
+        $this->provinceMap->removeElement($provinceMap);
+    }
+
+    /**
+     * Get provinceMap
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProvinceMap()
+    {
+        return $this->provinceMap;
     }
 }

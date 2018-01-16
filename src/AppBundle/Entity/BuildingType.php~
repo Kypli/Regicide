@@ -14,9 +14,9 @@ class BuildingType
 {
     /**
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Building", mappedBy="type")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Building", mappedBy="buildingType")
      */
-    private $buildingType;
+    private $building;
 
     /**
      * @var int
@@ -525,5 +525,70 @@ class BuildingType
     public function getBuildingType()
     {
         return $this->buildingType;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->buildingType = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add buildingType
+     *
+     * @param \AppBundle\Entity\Building $buildingType
+     *
+     * @return BuildingType
+     */
+    public function addBuildingType(\AppBundle\Entity\Building $buildingType)
+    {
+        $this->buildingType[] = $buildingType;
+
+        return $this;
+    }
+
+    /**
+     * Remove buildingType
+     *
+     * @param \AppBundle\Entity\Building $buildingType
+     */
+    public function removeBuildingType(\AppBundle\Entity\Building $buildingType)
+    {
+        $this->buildingType->removeElement($buildingType);
+    }
+
+    /**
+     * Add building
+     *
+     * @param \AppBundle\Entity\Building $building
+     *
+     * @return BuildingType
+     */
+    public function addBuilding(\AppBundle\Entity\Building $building)
+    {
+        $this->building[] = $building;
+
+        return $this;
+    }
+
+    /**
+     * Remove building
+     *
+     * @param \AppBundle\Entity\Building $building
+     */
+    public function removeBuilding(\AppBundle\Entity\Building $building)
+    {
+        $this->building->removeElement($building);
+    }
+
+    /**
+     * Get building
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBuilding()
+    {
+        return $this->building;
     }
 }

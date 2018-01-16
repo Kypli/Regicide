@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Player
 {
     /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="player")
+     */
+    private $personagePlayer;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -24,16 +30,79 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="$firstName", type="string", length=255)
      */
-    private $name;
+    private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="charact", type="string", length=255)
+     * @ORM\Column(name="lastName", type="string", length=255, nullable=true)
      */
-    private $charact;
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=255, nullable=true)
+     */
+    private $sexe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=255)
+     */
+    private $mail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="areaXmax", type="integer")
+     */
+    private $areaXmax;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="areaYmax", type="integer")
+     */
+    private $areaYmax;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="arrangement", type="string")
+     */
+    private $arrangement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="arrangementOrder", type="string")
+     */
+    private $arrangementOrder;
 
     /**
      * @var bool
@@ -44,84 +113,288 @@ class Player
 
 
     /**
-     * Get id
-     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
+     * @param int $id
      * @return Player
      */
-    public function setName($name)
+    public function setId(int $id): Player
     {
-        $this->name = $name;
-
+        $this->id = $id;
         return $this;
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
-    public function getName()
+    public function getFirstName(): string
     {
-        return $this->name;
+        return $this->firstName;
     }
 
     /**
-     * Set charact
-     *
-     * @param string $charact
-     *
+     * @param string $firstName
      * @return Player
      */
-    public function setCharact($charact)
+    public function setFirstName(string $firstName): Player
     {
-        $this->charact = $charact;
-
+        $this->firstName = $firstName;
         return $this;
     }
 
     /**
-     * Get charact
-     *
      * @return string
      */
-    public function getCharact()
+    public function getLastName(): string
     {
-        return $this->charact;
+        return $this->lastName;
     }
 
     /**
-     * Set active
-     *
-     * @param boolean $active
-     *
+     * @param string $lastName
      * @return Player
      */
-    public function setActive($active)
+    public function setLastName(string $lastName): Player
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSexe(): string
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * @param string $sexe
+     * @return Player
+     */
+    public function setSexe(string $sexe): Player
+    {
+        $this->sexe = $sexe;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     * @return Player
+     */
+    public function setCity(string $city): Player
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry(): string
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     * @return Player
+     */
+    public function setCountry(string $country): Player
+    {
+        $this->country = $country;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMail(): string
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param string $mail
+     * @return Player
+     */
+    public function setMail(string $mail): Player
+    {
+        $this->mail = $mail;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     * @return Player
+     */
+    public function setPassword(string $password): Player
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAreaXmax(): int
+    {
+        return $this->areaXmax;
+    }
+
+    /**
+     * @param int $areaXmax
+     * @return Player
+     */
+    public function setAreaXmax(int $areaXmax): Player
+    {
+        $this->areaXmax = $areaXmax;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAreaYmax(): int
+    {
+        return $this->areaYmax;
+    }
+
+    /**
+     * @param int $areaYmax
+     * @return Player
+     */
+    public function setAreaYmax(int $areaYmax): Player
+    {
+        $this->areaYmax = $areaYmax;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getArrangement(): string
+    {
+        return $this->arrangement;
+    }
+
+    /**
+     * @param string $arrangement
+     * @return Player
+     */
+    public function setArrangement(string $arrangement): Player
+    {
+        $this->arrangement = $arrangement;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getArrangementOrder(): string
+    {
+        return $this->arrangementOrder;
+    }
+
+    /**
+     * @param string $arrangementOrder
+     * @return Player
+     */
+    public function setArrangementOrder(string $arrangementOrder): Player
+    {
+        $this->arrangementOrder = $arrangementOrder;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     * @return Player
+     */
+    public function setActive(bool $active): Player
     {
         $this->active = $active;
-
         return $this;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->personagePlayer = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get active
      *
-     * @return bool
+     * @return boolean
      */
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * Add personagePlayer
+     *
+     * @param \AppBundle\Entity\Personage $personagePlayer
+     *
+     * @return Player
+     */
+    public function addPersonagePlayer(\AppBundle\Entity\Personage $personagePlayer)
+    {
+        $this->personagePlayer[] = $personagePlayer;
+
+        return $this;
+    }
+
+    /**
+     * Remove personagePlayer
+     *
+     * @param \AppBundle\Entity\Personage $personagePlayer
+     */
+    public function removePersonagePlayer(\AppBundle\Entity\Personage $personagePlayer)
+    {
+        $this->personagePlayer->removeElement($personagePlayer);
+    }
+
+    /**
+     * Get personagePlayer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPersonagePlayer()
+    {
+        return $this->personagePlayer;
     }
 }

@@ -339,4 +339,28 @@ class Building
     {
         $this->type->removeElement($type);
     }
+
+    /**
+     * Set buildingType
+     *
+     * @param \AppBundle\Entity\BuildingType $buildingType
+     *
+     * @return Building
+     */
+    public function setBuildingType(\AppBundle\Entity\BuildingType $buildingType = null)
+    {
+        $this->buildingType = $buildingType;
+
+        return $this;
+    }
+
+    /**
+     * Get buildingType
+     *
+     * @return \AppBundle\Entity\BuildingType
+     */
+    public function getBuildingType()
+    {
+        return $this->buildingType;
+    }
 }

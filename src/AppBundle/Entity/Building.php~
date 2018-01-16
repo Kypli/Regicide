@@ -14,15 +14,15 @@ class Building
 {
     /**
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Map", mappedBy="locationMap")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Map", inversedBy="locationMap")
      */
     private $location;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Map", inversedBy="buildingType")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BuildingType", inversedBy="building")
      */
-    private $type;
+    private $buildingType;
 
     /**
      * @var int
@@ -338,5 +338,29 @@ class Building
     public function removeType(\AppBundle\Entity\Map $type)
     {
         $this->type->removeElement($type);
+    }
+
+    /**
+     * Set buildingType
+     *
+     * @param \AppBundle\Entity\BuildingType $buildingType
+     *
+     * @return Building
+     */
+    public function setBuildingType(\AppBundle\Entity\BuildingType $buildingType = null)
+    {
+        $this->buildingType = $buildingType;
+
+        return $this;
+    }
+
+    /**
+     * Get buildingType
+     *
+     * @return \AppBundle\Entity\BuildingType
+     */
+    public function getBuildingType()
+    {
+        return $this->buildingType;
     }
 }

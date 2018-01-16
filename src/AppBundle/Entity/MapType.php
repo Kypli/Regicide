@@ -347,4 +347,45 @@ class MapType
     {
         return $this->speedConstructionLevel;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->map = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add map
+     *
+     * @param \AppBundle\Entity\Map $map
+     *
+     * @return MapType
+     */
+    public function addMap(\AppBundle\Entity\Map $map)
+    {
+        $this->map[] = $map;
+
+        return $this;
+    }
+
+    /**
+     * Remove map
+     *
+     * @param \AppBundle\Entity\Map $map
+     */
+    public function removeMap(\AppBundle\Entity\Map $map)
+    {
+        $this->map->removeElement($map);
+    }
+
+    /**
+     * Get map
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMap()
+    {
+        return $this->map;
+    }
 }

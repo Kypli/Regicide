@@ -14,7 +14,25 @@ class Map
 {
     /**
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Building", inversedBy="location")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personage", inversedBy="mapPersonage")
+     */
+    private $personage;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Province", inversedBy="provinceMap")
+     */
+    private $province;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MapType", inversedBy="map")
+     */
+    private $mapType;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Building", mappedBy="location")
      */
     private $locationMap;
 
@@ -47,13 +65,6 @@ class Map
      * @ORM\Column(name="presence", type="integer")
      */
     private $presence;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255)
-     */
-    private $type;
 
     /**
      * @var int
@@ -277,5 +288,77 @@ class Map
     public function getLocationMap()
     {
         return $this->locationMap;
+    }
+
+    /**
+     * Set personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     *
+     * @return Map
+     */
+    public function setPersonage(\AppBundle\Entity\Personage $personage = null)
+    {
+        $this->personage = $personage;
+
+        return $this;
+    }
+
+    /**
+     * Get personage
+     *
+     * @return \AppBundle\Entity\Personage
+     */
+    public function getPersonage()
+    {
+        return $this->personage;
+    }
+
+    /**
+     * Set province
+     *
+     * @param \AppBundle\Entity\Province $province
+     *
+     * @return Map
+     */
+    public function setProvince(\AppBundle\Entity\Province $province = null)
+    {
+        $this->province = $province;
+
+        return $this;
+    }
+
+    /**
+     * Get province
+     *
+     * @return \AppBundle\Entity\Province
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    /**
+     * Set mapType
+     *
+     * @param \AppBundle\Entity\MapType $mapType
+     *
+     * @return Map
+     */
+    public function setMapType(\AppBundle\Entity\MapType $mapType = null)
+    {
+        $this->mapType = $mapType;
+
+        return $this;
+    }
+
+    /**
+     * Get mapType
+     *
+     * @return \AppBundle\Entity\MapType
+     */
+    public function getMapType()
+    {
+        return $this->mapType;
     }
 }

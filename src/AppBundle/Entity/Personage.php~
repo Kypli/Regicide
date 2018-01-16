@@ -13,6 +13,30 @@ use Doctrine\ORM\Mapping as ORM;
 class Personage
 {
     /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Map", mappedBy="personage")
+     */
+    private $mapPersonage;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Player", inversedBy="personagePlayer")
+     */
+    private $player;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonageStats", inversedBy="personage")
+     */
+    private $personageStats;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Clan", inversedBy="personageClan")
+     */
+    private $clan;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -24,16 +48,44 @@ class Personage
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="firstName", type="string", length=255)
      */
-    private $name;
+    private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="clan", type="string", length=255)
+     * @ORM\Column(name="lastName", type="string", length=255)
      */
-    private $clan;
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age", type="string", length=255)
+     */
+    private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", length=255)
+     */
+    private $gender;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="photo", type="boolean", length=255)
+     */
+    private $photo;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="receveiveMail", type="integer", length=255)
+     */
+    private $receveiveMail;
 
     /**
      * @var string
@@ -50,27 +102,6 @@ class Personage
     private $province;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="areaX", type="integer")
-     */
-    private $areaX;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="areaY", type="integer")
-     */
-    private $areaY;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="gender", type="string", length=255)
-     */
-    private $gender;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="job", type="string", length=255)
@@ -85,83 +116,337 @@ class Personage
     private $job2;
 
     /**
-     * @var int
+     * @var bool
      *
-     * @ORM\Column(name="hp", type="integer")
+     * @ORM\Column(name="insideBuilding", type="boolean")
      */
-    private $hp;
+    private $insideBuilding;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="bonusHp", type="integer")
-     */
-    private $bonusHp;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="weightInventory", type="integer")
-     */
-    private $weightInventory;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="heightInventory", type="integer")
-     */
-    private $heightInventory;
-
-    /**
-     * @var date
-     *
-     * @ORM\Column(name="dateLastAction", type="datetime")
-     */
-    private $dateLastAction;
-
-
-    /**
-     * Get id
-     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * Set name
+     * @param int $id
+     * @return Personage
+     */
+    public function setId(int $id): Personage
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     * @return Personage
+     */
+    public function setFirstName(string $firstName): Personage
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     * @return Personage
+     */
+    public function setLastName(string $lastName): Personage
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAge(): string
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param string $age
+     * @return Personage
+     */
+    public function setAge(string $age): Personage
+    {
+        $this->age = $age;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGender(): string
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param string $gender
+     * @return Personage
+     */
+    public function setGender(string $gender): Personage
+    {
+        $this->gender = $gender;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPhoto(): bool
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param bool $photo
+     * @return Personage
+     */
+    public function setPhoto(bool $photo): Personage
+    {
+        $this->photo = $photo;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReceveiveMail(): int
+    {
+        return $this->receveiveMail;
+    }
+
+    /**
+     * @param int $receveiveMail
+     * @return Personage
+     */
+    public function setReceveiveMail(int $receveiveMail): Personage
+    {
+        $this->receveiveMail = $receveiveMail;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvention(): string
+    {
+        return $this->invention;
+    }
+
+    /**
+     * @param string $invention
+     * @return Personage
+     */
+    public function setInvention(string $invention): Personage
+    {
+        $this->invention = $invention;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProvince(): string
+    {
+        return $this->province;
+    }
+
+    /**
+     * @param string $province
+     * @return Personage
+     */
+    public function setProvince(string $province): Personage
+    {
+        $this->province = $province;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getJob(): string
+    {
+        return $this->job;
+    }
+
+    /**
+     * @param string $job
+     * @return Personage
+     */
+    public function setJob(string $job): Personage
+    {
+        $this->job = $job;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getJob2(): string
+    {
+        return $this->job2;
+    }
+
+    /**
+     * @param string $job2
+     * @return Personage
+     */
+    public function setJob2(string $job2): Personage
+    {
+        $this->job2 = $job2;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInsideBuilding(): bool
+    {
+        return $this->insideBuilding;
+    }
+
+    /**
+     * @param bool $insideBuilding
+     * @return Personage
+     */
+    public function setInsideBuilding(bool $insideBuilding): Personage
+    {
+        $this->insideBuilding = $insideBuilding;
+        return $this;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->mapPersonage = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add mapPersonage
      *
-     * @param string $name
+     * @param \AppBundle\Entity\Map $mapPersonage
      *
      * @return Personage
      */
-    public function setName($name)
+    public function addMapPersonage(\AppBundle\Entity\Map $mapPersonage)
     {
-        $this->name = $name;
+        $this->mapPersonage[] = $mapPersonage;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Remove mapPersonage
      *
-     * @return string
+     * @param \AppBundle\Entity\Map $mapPersonage
      */
-    public function getName()
+    public function removeMapPersonage(\AppBundle\Entity\Map $mapPersonage)
     {
-        return $this->name;
+        $this->mapPersonage->removeElement($mapPersonage);
+    }
+
+    /**
+     * Get mapPersonage
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMapPersonage()
+    {
+        return $this->mapPersonage;
+    }
+
+
+    /**
+     * Get photo
+     *
+     * @return boolean
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set player
+     *
+     * @param \AppBundle\Entity\Player $player
+     *
+     * @return Personage
+     */
+    public function setPlayer(\AppBundle\Entity\Player $player = null)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * Get player
+     *
+     * @return \AppBundle\Entity\Player
+     */
+    public function getPlayer()
+    {
+        return $this->player;
+    }
+
+    /**
+     * Set personageStats
+     *
+     * @param \AppBundle\Entity\PersonageStats $personageStats
+     *
+     * @return Personage
+     */
+    public function setPersonageStats(\AppBundle\Entity\PersonageStats $personageStats = null)
+    {
+        $this->personageStats = $personageStats;
+
+        return $this;
+    }
+
+    /**
+     * Get personageStats
+     *
+     * @return \AppBundle\Entity\PersonageStats
+     */
+    public function getPersonageStats()
+    {
+        return $this->personageStats;
     }
 
     /**
      * Set clan
      *
-     * @param string $clan
+     * @param \AppBundle\Entity\Clan $clan
      *
      * @return Personage
      */
-    public function setClan($clan)
+    public function setClan(\AppBundle\Entity\Clan $clan = null)
     {
         $this->clan = $clan;
 
@@ -171,7 +456,7 @@ class Personage
     /**
      * Get clan
      *
-     * @return string
+     * @return \AppBundle\Entity\Clan
      */
     public function getClan()
     {
@@ -179,290 +464,12 @@ class Personage
     }
 
     /**
-     * Set invention
+     * Get insideBuilding
      *
-     * @param string $invention
-     *
-     * @return Personage
+     * @return boolean
      */
-    public function setInvention($invention)
+    public function getInsideBuilding()
     {
-        $this->invention = $invention;
-
-        return $this;
-    }
-
-    /**
-     * Get invention
-     *
-     * @return string
-     */
-    public function getInvention()
-    {
-        return $this->invention;
-    }
-
-    /**
-     * Set province
-     *
-     * @param string $province
-     *
-     * @return Personage
-     */
-    public function setProvince($province)
-    {
-        $this->province = $province;
-
-        return $this;
-    }
-
-    /**
-     * Get province
-     *
-     * @return string
-     */
-    public function getProvince()
-    {
-        return $this->province;
-    }
-
-    /**
-     * Set areaX
-     *
-     * @param integer $areaX
-     *
-     * @return Personage
-     */
-    public function setAreaX($areaX)
-    {
-        $this->areaX = $areaX;
-
-        return $this;
-    }
-
-    /**
-     * Get areaX
-     *
-     * @return int
-     */
-    public function getAreaX()
-    {
-        return $this->areaX;
-    }
-
-    /**
-     * Set areaY
-     *
-     * @param integer $areaY
-     *
-     * @return Personage
-     */
-    public function setAreaY($areaY)
-    {
-        $this->areaY = $areaY;
-
-        return $this;
-    }
-
-    /**
-     * Get areaY
-     *
-     * @return int
-     */
-    public function getAreaY()
-    {
-        return $this->areaY;
-    }
-
-    /**
-     * Set gender
-     *
-     * @param string $gender
-     *
-     * @return Personage
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
-     * Get gender
-     *
-     * @return string
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * Set job
-     *
-     * @param string $job
-     *
-     * @return Personage
-     */
-    public function setJob($job)
-    {
-        $this->job = $job;
-
-        return $this;
-    }
-
-    /**
-     * Get job
-     *
-     * @return string
-     */
-    public function getJob()
-    {
-        return $this->job;
-    }
-
-    /**
-     * Set job2
-     *
-     * @param string $job2
-     *
-     * @return Personage
-     */
-    public function setJob2($job2)
-    {
-        $this->job2 = $job2;
-
-        return $this;
-    }
-
-    /**
-     * Get job2
-     *
-     * @return string
-     */
-    public function getJob2()
-    {
-        return $this->job2;
-    }
-
-    /**
-     * Set hp
-     *
-     * @param integer $hp
-     *
-     * @return Personage
-     */
-    public function setHp($hp)
-    {
-        $this->hp = $hp;
-
-        return $this;
-    }
-
-    /**
-     * Get hp
-     *
-     * @return int
-     */
-    public function getHp()
-    {
-        return $this->hp;
-    }
-
-    /**
-     * Set bonusHp
-     *
-     * @param integer $bonusHp
-     *
-     * @return Personage
-     */
-    public function setBonusHp($bonusHp)
-    {
-        $this->bonusHp = $bonusHp;
-
-        return $this;
-    }
-
-    /**
-     * Get bonusHp
-     *
-     * @return int
-     */
-    public function getBonusHp()
-    {
-        return $this->bonusHp;
-    }
-
-    /**
-     * Set weightInventory
-     *
-     * @param integer $weightInventory
-     *
-     * @return Personage
-     */
-    public function setWeightInventory($weightInventory)
-    {
-        $this->weightInventory = $weightInventory;
-
-        return $this;
-    }
-
-    /**
-     * Get weightInventory
-     *
-     * @return int
-     */
-    public function getWeightInventory()
-    {
-        return $this->weightInventory;
-    }
-
-    /**
-     * Set heightInventory
-     *
-     * @param integer $heightInventory
-     *
-     * @return Personage
-     */
-    public function setHeightInventory($heightInventory)
-    {
-        $this->heightInventory = $heightInventory;
-
-        return $this;
-    }
-
-    /**
-     * Get heightInventory
-     *
-     * @return int
-     */
-    public function getHeightInventory()
-    {
-        return $this->heightInventory;
-    }
-
-    /**
-     * Set dateLastAction
-     *
-     * @param \DateTime $dateLastAction
-     *
-     * @return Personage
-     */
-    public function setDateLastAction($dateLastAction)
-    {
-        $this->dateLastAction = $dateLastAction;
-
-        return $this;
-    }
-
-    /**
-     * Get dateLastAction
-     *
-     * @return \DateTime
-     */
-    public function getDateLastAction()
-    {
-        return $this->dateLastAction;
+        return $this->insideBuilding;
     }
 }
