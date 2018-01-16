@@ -99,4 +99,45 @@ class Weather
     {
         return $this->effect;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->provinceWeather = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add provinceWeather
+     *
+     * @param \AppBundle\Entity\Province $provinceWeather
+     *
+     * @return Weather
+     */
+    public function addProvinceWeather(\AppBundle\Entity\Province $provinceWeather)
+    {
+        $this->provinceWeather[] = $provinceWeather;
+
+        return $this;
+    }
+
+    /**
+     * Remove provinceWeather
+     *
+     * @param \AppBundle\Entity\Province $provinceWeather
+     */
+    public function removeProvinceWeather(\AppBundle\Entity\Province $provinceWeather)
+    {
+        $this->provinceWeather->removeElement($provinceWeather);
+    }
+
+    /**
+     * Get provinceWeather
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProvinceWeather()
+    {
+        return $this->provinceWeather;
+    }
 }
