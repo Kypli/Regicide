@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Weather
+ * ObjectType
  *
- * @ORM\Table(name="weather")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\WeatherRepository")
+ * @ORM\Table(name="object_type")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ObjectTypeRepository")
  */
-class Weather
+class ObjectType
 {
     /**
      * @var int
@@ -31,9 +31,9 @@ class Weather
     /**
      * @var string
      *
-     * @ORM\Column(name="effect", type="string", length=255)
+     * @ORM\Column(name="description", type="text")
      */
-    private $effect;
+    private $description;
 
 
     /**
@@ -51,7 +51,7 @@ class Weather
      *
      * @param string $name
      *
-     * @return Weather
+     * @return ObjectType
      */
     public function setName($name)
     {
@@ -71,26 +71,26 @@ class Weather
     }
 
     /**
-     * Set effect
+     * Set description
      *
-     * @param string $effect
+     * @param string $description
      *
-     * @return Weather
+     * @return ObjectType
      */
-    public function setEffect($effect)
+    public function setDescription($description)
     {
-        $this->effect = $effect;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get effect
+     * Get description
      *
      * @return string
      */
-    public function getEffect()
+    public function getDescription()
     {
-        return $this->effect;
+        return $this->description;
     }
 }

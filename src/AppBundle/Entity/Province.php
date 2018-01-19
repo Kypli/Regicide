@@ -222,4 +222,45 @@ class Province
     {
         return $this->limitY;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->provinceMap = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add provinceMap
+     *
+     * @param \AppBundle\Entity\Map $provinceMap
+     *
+     * @return Province
+     */
+    public function addProvinceMap(\AppBundle\Entity\Map $provinceMap)
+    {
+        $this->provinceMap[] = $provinceMap;
+
+        return $this;
+    }
+
+    /**
+     * Remove provinceMap
+     *
+     * @param \AppBundle\Entity\Map $provinceMap
+     */
+    public function removeProvinceMap(\AppBundle\Entity\Map $provinceMap)
+    {
+        $this->provinceMap->removeElement($provinceMap);
+    }
+
+    /**
+     * Get provinceMap
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProvinceMap()
+    {
+        return $this->provinceMap;
+    }
 }

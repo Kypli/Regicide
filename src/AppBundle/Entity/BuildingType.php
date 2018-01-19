@@ -100,9 +100,9 @@ class BuildingType
     /**
      * @var int
      *
-     * @ORM\Column(name="maxLevel", type="integer")
+     * @ORM\Column(name="level", type="integer")
      */
-    private $maxLevel;
+    private $level;
 
     /**
      * @var int
@@ -384,27 +384,27 @@ class BuildingType
     }
 
     /**
-     * Set maxLevel
+     * Set level
      *
-     * @param integer $maxLevel
+     * @param integer $level
      *
      * @return BuildingType
      */
-    public function setMaxLevel($maxLevel)
+    public function setLevel($level)
     {
-        $this->maxLevel = $maxLevel;
+        $this->level = $level;
 
         return $this;
     }
 
     /**
-     * Get maxLevel
+     * Get level
      *
      * @return int
      */
-    public function getMaxLevel()
+    public function getLevel()
     {
-        return $this->maxLevel;
+        return $this->level;
     }
 
     /**
@@ -556,5 +556,39 @@ class BuildingType
     public function removeBuildingType(\AppBundle\Entity\Building $buildingType)
     {
         $this->buildingType->removeElement($buildingType);
+    }
+
+    /**
+     * Add building
+     *
+     * @param \AppBundle\Entity\Building $building
+     *
+     * @return BuildingType
+     */
+    public function addBuilding(\AppBundle\Entity\Building $building)
+    {
+        $this->building[] = $building;
+
+        return $this;
+    }
+
+    /**
+     * Remove building
+     *
+     * @param \AppBundle\Entity\Building $building
+     */
+    public function removeBuilding(\AppBundle\Entity\Building $building)
+    {
+        $this->building->removeElement($building);
+    }
+
+    /**
+     * Get building
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBuilding()
+    {
+        return $this->building;
     }
 }

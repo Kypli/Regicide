@@ -37,6 +37,12 @@ class Map
     private $locationMap;
 
     /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\BuildingInside", mappedBy="locationInside")
+     */
+    private $locationMapInside;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -288,5 +294,101 @@ class Map
     public function getLocationMap()
     {
         return $this->locationMap;
+    }
+
+    /**
+     * Set locationMapInside
+     *
+     * @param \AppBundle\Entity\BuildingInside $locationMapInside
+     *
+     * @return Map
+     */
+    public function setLocationMapInside(\AppBundle\Entity\Building $locationMapInside = null)
+    {
+        $this->locationMapInside = $locationMapInside;
+
+        return $this;
+    }
+
+    /**
+     * Get locationMapInside
+     *
+     * @return \AppBundle\Entity\BuildingInside
+     */
+    public function getLocationMapInside()
+    {
+        return $this->locationMapInside;
+    }
+
+    /**
+     * Set personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     *
+     * @return Map
+     */
+    public function setPersonage(\AppBundle\Entity\Personage $personage = null)
+    {
+        $this->personage = $personage;
+
+        return $this;
+    }
+
+    /**
+     * Get personage
+     *
+     * @return \AppBundle\Entity\Personage
+     */
+    public function getPersonage()
+    {
+        return $this->personage;
+    }
+
+    /**
+     * Set province
+     *
+     * @param \AppBundle\Entity\Province $province
+     *
+     * @return Map
+     */
+    public function setProvince(\AppBundle\Entity\Province $province = null)
+    {
+        $this->province = $province;
+
+        return $this;
+    }
+
+    /**
+     * Get province
+     *
+     * @return \AppBundle\Entity\Province
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    /**
+     * Set mapType
+     *
+     * @param \AppBundle\Entity\MapType $mapType
+     *
+     * @return Map
+     */
+    public function setMapType(\AppBundle\Entity\MapType $mapType = null)
+    {
+        $this->mapType = $mapType;
+
+        return $this;
+    }
+
+    /**
+     * Get mapType
+     *
+     * @return \AppBundle\Entity\MapType
+     */
+    public function getMapType()
+    {
+        return $this->mapType;
     }
 }
