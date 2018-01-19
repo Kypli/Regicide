@@ -12,13 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Clan
 {
-
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClanRank", mappedBy="clan")
-     */
-    private $clanRank;
-
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="clan")
@@ -74,71 +67,5 @@ class Clan
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->personageClan = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add personageClan
-     *
-     * @param \AppBundle\Entity\Personage $personageClan
-     *
-     * @return Clan
-     */
-    public function addPersonageClan(\AppBundle\Entity\Personage $personageClan)
-    {
-        $this->personageClan[] = $personageClan;
-
-        return $this;
-    }
-
-    /**
-     * Remove personageClan
-     *
-     * @param \AppBundle\Entity\Personage $personageClan
-     */
-    public function removePersonageClan(\AppBundle\Entity\Personage $personageClan)
-    {
-        $this->personageClan->removeElement($personageClan);
-    }
-
-    /**
-     * Get personageClan
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPersonageClan()
-    {
-        return $this->personageClan;
-    }
-
-    /**
-     * Set clanRank
-     *
-     * @param \AppBundle\Entity\ClanRank $clanRank
-     *
-     * @return Clan
-     */
-    public function setClanRank(\AppBundle\Entity\ClanRank $clanRank = null)
-    {
-        $this->clanRank = $clanRank;
-
-        return $this;
-    }
-
-    /**
-     * Get clanRank
-     *
-     * @return \AppBundle\Entity\ClanRank
-     */
-    public function getClanRank()
-    {
-        return $this->clanRank;
     }
 }
