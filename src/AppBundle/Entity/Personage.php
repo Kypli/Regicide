@@ -14,13 +14,31 @@ class Personage
 {
     /**
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ressource", mappedBy="personage")
+     */
+    private $ressource;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Object", mappedBy="personage")
+     */
+    private $object;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rapport", inversedBy="personage")
+     */
+    private $rapport;
+
+    /**
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Map", mappedBy="personage")
      */
     private $mapPersonage;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Player", inversedBy="personagePlayer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Player", inversedBy="personage")
      */
     private $player;
 
@@ -29,6 +47,12 @@ class Personage
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonageStats", inversedBy="personage")
      */
     private $personageStats;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PersonageInvention", mappedBy="personage")
+     */
+    private $personageInvention;
 
     /**
      *
@@ -471,5 +495,121 @@ class Personage
     public function getInsideBuilding()
     {
         return $this->insideBuilding;
+    }
+
+    /**
+     * Set rapport
+     *
+     * @param \AppBundle\Entity\Rapport $rapport
+     *
+     * @return Personage
+     */
+    public function setRapport(\AppBundle\Entity\Rapport $rapport = null)
+    {
+        $this->rapport = $rapport;
+
+        return $this;
+    }
+
+    /**
+     * Get rapport
+     *
+     * @return \AppBundle\Entity\Rapport
+     */
+    public function getRapport()
+    {
+        return $this->rapport;
+    }
+
+    /**
+     * Add ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     *
+     * @return Personage
+     */
+    public function addRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource[] = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     */
+    public function removeRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource->removeElement($ressource);
+    }
+
+    /**
+     * Get ressource
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessource()
+    {
+        return $this->ressource;
+    }
+
+    /**
+     * Add object
+     *
+     * @param \AppBundle\Entity\Object $object
+     *
+     * @return Personage
+     */
+    public function addObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object[] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Remove object
+     *
+     * @param \AppBundle\Entity\Object $object
+     */
+    public function removeObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object->removeElement($object);
+    }
+
+    /**
+     * Get object
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObject()
+    {
+        return $this->object;
+    }
+
+    /**
+     * Set personageInvention
+     *
+     * @param \AppBundle\Entity\PersonageInvention $personageInvention
+     *
+     * @return Personage
+     */
+    public function setPersonageInvention(\AppBundle\Entity\PersonageInvention $personageInvention = null)
+    {
+        $this->personageInvention = $personageInvention;
+
+        return $this;
+    }
+
+    /**
+     * Get personageInvention
+     *
+     * @return \AppBundle\Entity\PersonageInvention
+     */
+    public function getPersonageInvention()
+    {
+        return $this->personageInvention;
     }
 }

@@ -13,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class PersonageInvention
 {
     /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personage", inversedBy="personageInvention")
+     */
+    private $personage;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invention", inversedBy="personageInvention")
+     */
+    private $invention;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -24,23 +36,9 @@ class PersonageInvention
     /**
      * @var int
      *
-     * @ORM\Column(name="invention", type="integer")
-     */
-    private $invention;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="invention_progress", type="integer")
      */
     private $inventionProgress;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="intuition", type="integer")
-     */
-    private $intuition;
 
     /**
      * @var int
@@ -58,30 +56,6 @@ class PersonageInvention
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set invention
-     *
-     * @param integer $invention
-     *
-     * @return PersonageInvention
-     */
-    public function setInvention($invention)
-    {
-        $this->invention = $invention;
-
-        return $this;
-    }
-
-    /**
-     * Get invention
-     *
-     * @return int
-     */
-    public function getInvention()
-    {
-        return $this->invention;
     }
 
     /**
@@ -109,30 +83,6 @@ class PersonageInvention
     }
 
     /**
-     * Set intuition
-     *
-     * @param integer $intuition
-     *
-     * @return PersonageInvention
-     */
-    public function setIntuition($intuition)
-    {
-        $this->intuition = $intuition;
-
-        return $this;
-    }
-
-    /**
-     * Get intuition
-     *
-     * @return int
-     */
-    public function getIntuition()
-    {
-        return $this->intuition;
-    }
-
-    /**
      * Set intuitionProgress
      *
      * @param integer $intuitionProgress
@@ -154,5 +104,60 @@ class PersonageInvention
     public function getIntuitionProgress()
     {
         return $this->intuitionProgress;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->invention = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add invention
+     *
+     * @param \AppBundle\Entity\Personage $invention
+     *
+     * @return PersonageInvention
+     */
+    public function addInvention(\AppBundle\Entity\Personage $invention)
+    {
+        $this->invention[] = $invention;
+
+        return $this;
+    }
+
+    /**
+     * Remove invention
+     *
+     * @param \AppBundle\Entity\Personage $invention
+     */
+    public function removeInvention(\AppBundle\Entity\Personage $invention)
+    {
+        $this->invention->removeElement($invention);
+    }
+
+    /**
+     * Get invention
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInvention()
+    {
+        return $this->invention;
+    }
+
+    /**
+     * Set invention
+     *
+     * @param \AppBundle\Entity\Personage $invention
+     *
+     * @return PersonageInvention
+     */
+    public function setInvention(\AppBundle\Entity\Personage $invention = null)
+    {
+        $this->invention = $invention;
+
+        return $this;
     }
 }

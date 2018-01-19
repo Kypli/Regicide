@@ -13,6 +13,24 @@ use Doctrine\ORM\Mapping as ORM;
 class OrderCost
 {
     /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\RessourceType", inversedBy="orderCost")
+     */
+    private $ressourceType;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ObjectType", inversedBy="orderCost")
+     */
+    private $objectType;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Orderr", mappedBy="orderCost")
+     */
+    private $orderr;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -310,5 +328,93 @@ class OrderCost
     {
         return $this->res5Quantity;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderr = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Set ressourceType
+     *
+     * @param \AppBundle\Entity\RessourceType $ressourceType
+     *
+     * @return OrderCost
+     */
+    public function setRessourceType(\AppBundle\Entity\RessourceType $ressourceType = null)
+    {
+        $this->ressourceType = $ressourceType;
+
+        return $this;
+    }
+
+    /**
+     * Get ressourceType
+     *
+     * @return \AppBundle\Entity\RessourceType
+     */
+    public function getRessourceType()
+    {
+        return $this->ressourceType;
+    }
+
+    /**
+     * Set objectType
+     *
+     * @param \AppBundle\Entity\ObjectType $objectType
+     *
+     * @return OrderCost
+     */
+    public function setObjectType(\AppBundle\Entity\ObjectType $objectType = null)
+    {
+        $this->objectType = $objectType;
+
+        return $this;
+    }
+
+    /**
+     * Get objectType
+     *
+     * @return \AppBundle\Entity\ObjectType
+     */
+    public function getObjectType()
+    {
+        return $this->objectType;
+    }
+
+    /**
+     * Add orderr
+     *
+     * @param \AppBundle\Entity\Orderr $orderr
+     *
+     * @return OrderCost
+     */
+    public function addOrderr(\AppBundle\Entity\Orderr $orderr)
+    {
+        $this->orderr[] = $orderr;
+
+        return $this;
+    }
+
+    /**
+     * Remove orderr
+     *
+     * @param \AppBundle\Entity\Orderr $orderr
+     */
+    public function removeOrderr(\AppBundle\Entity\Orderr $orderr)
+    {
+        $this->orderr->removeElement($orderr);
+    }
+
+    /**
+     * Get orderr
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrderr()
+    {
+        return $this->orderr;
+    }
+}

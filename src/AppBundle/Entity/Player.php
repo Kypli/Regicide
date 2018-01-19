@@ -14,9 +14,21 @@ class Player
 {
     /**
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mail", mappedBy="player")
+     */
+    private $mailPlayer;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MiniTchat", mappedBy="player")
+     */
+    private $minitchatPlayer;
+
+    /**
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="player")
      */
-    private $personagePlayer;
+    private $personage;
 
     /**
      * @var int
@@ -396,5 +408,73 @@ class Player
     public function getPersonagePlayer()
     {
         return $this->personagePlayer;
+    }
+
+    /**
+     * Add mailPlayer
+     *
+     * @param \AppBundle\Entity\Mail $mailPlayer
+     *
+     * @return Player
+     */
+    public function addMailPlayer(\AppBundle\Entity\Mail $mailPlayer)
+    {
+        $this->mailPlayer[] = $mailPlayer;
+
+        return $this;
+    }
+
+    /**
+     * Remove mailPlayer
+     *
+     * @param \AppBundle\Entity\Mail $mailPlayer
+     */
+    public function removeMailPlayer(\AppBundle\Entity\Mail $mailPlayer)
+    {
+        $this->mailPlayer->removeElement($mailPlayer);
+    }
+
+    /**
+     * Get mailPlayer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMailPlayer()
+    {
+        return $this->mailPlayer;
+    }
+
+    /**
+     * Add minitchatPlayer
+     *
+     * @param \AppBundle\Entity\MiniTchat $minitchatPlayer
+     *
+     * @return Player
+     */
+    public function addMinitchatPlayer(\AppBundle\Entity\MiniTchat $minitchatPlayer)
+    {
+        $this->minitchatPlayer[] = $minitchatPlayer;
+
+        return $this;
+    }
+
+    /**
+     * Remove minitchatPlayer
+     *
+     * @param \AppBundle\Entity\MiniTchat $minitchatPlayer
+     */
+    public function removeMinitchatPlayer(\AppBundle\Entity\MiniTchat $minitchatPlayer)
+    {
+        $this->minitchatPlayer->removeElement($minitchatPlayer);
+    }
+
+    /**
+     * Get minitchatPlayer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMinitchatPlayer()
+    {
+        return $this->minitchatPlayer;
     }
 }

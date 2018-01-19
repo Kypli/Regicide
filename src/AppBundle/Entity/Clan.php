@@ -12,10 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Clan
 {
-
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClanRank", mappedBy="clan")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClanRank", inversedBy="clan")
      */
     private $clanRank;
 

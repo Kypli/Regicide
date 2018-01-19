@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class MiniTchat
 {
     /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Player", inversedBy="minitchatPlayer")
+     */
+    private $player;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -154,5 +160,29 @@ class MiniTchat
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set player
+     *
+     * @param \AppBundle\Entity\Player $player
+     *
+     * @return MiniTchat
+     */
+    public function setPlayer(\AppBundle\Entity\Player $player = null)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * Get player
+     *
+     * @return \AppBundle\Entity\Player
+     */
+    public function getPlayer()
+    {
+        return $this->player;
     }
 }

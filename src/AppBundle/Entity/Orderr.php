@@ -13,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Orderr
 {
     /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\OrderInfluence", inversedBy="orderr")
+     */
+    private $orderInfluence;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\OrderCost", inversedBy="orderr")
+     */
+    private $orderCost;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -155,5 +167,52 @@ class Orderr
     {
         return $this->intuition;
     }
-}
 
+    /**
+     * Set orderInfluence
+     *
+     * @param \AppBundle\Entity\OrderInfluence $orderInfluence
+     *
+     * @return Orderr
+     */
+    public function setOrderInfluence(\AppBundle\Entity\OrderInfluence $orderInfluence = null)
+    {
+        $this->orderInfluence = $orderInfluence;
+
+        return $this;
+    }
+
+    /**
+     * Get orderInfluence
+     *
+     * @return \AppBundle\Entity\OrderInfluence
+     */
+    public function getOrderInfluence()
+    {
+        return $this->orderInfluence;
+    }
+
+    /**
+     * Set orderCost
+     *
+     * @param \AppBundle\Entity\OrderCost $orderCost
+     *
+     * @return Orderr
+     */
+    public function setOrderCost(\AppBundle\Entity\OrderCost $orderCost = null)
+    {
+        $this->orderCost = $orderCost;
+
+        return $this;
+    }
+
+    /**
+     * Get orderCost
+     *
+     * @return \AppBundle\Entity\OrderCost
+     */
+    public function getOrderCost()
+    {
+        return $this->orderCost;
+    }
+}

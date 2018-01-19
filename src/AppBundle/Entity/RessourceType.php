@@ -13,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class RessourceType
 {
     /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\OrderCost", mappedBy="ressourceType")
+     */
+    private $orderCost;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ressource", mappedBy="ressourceType")
+     */
+    private $ressource;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -216,5 +228,128 @@ class RessourceType
     public function getBonusWeather()
     {
         return $this->bonusWeather;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->resource = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add resource
+     *
+     * @param \AppBundle\Entity\Ressource $resource
+     *
+     * @return RessourceType
+     */
+    public function addResource(\AppBundle\Entity\Ressource $resource)
+    {
+        $this->ressource[] = $resource;
+
+        return $this;
+    }
+
+    /**
+     * Remove resource
+     *
+     * @param \AppBundle\Entity\Ressource $resource
+     */
+    public function removeResource(\AppBundle\Entity\Ressource $resource)
+    {
+        $this->ressource->removeElement($resource);
+    }
+
+    /**
+     * Get resource
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getResource()
+    {
+        return $this->ressource;
+    }
+
+    /**
+     * Add orderCost
+     *
+     * @param \AppBundle\Entity\OrderCost $orderCost
+     *
+     * @return RessourceType
+     */
+    public function addOrderCost(\AppBundle\Entity\OrderCost $orderCost)
+    {
+        $this->orderCost[] = $orderCost;
+
+        return $this;
+    }
+
+    /**
+     * Remove orderCost
+     *
+     * @param \AppBundle\Entity\OrderCost $orderCost
+     */
+    public function removeOrderCost(\AppBundle\Entity\OrderCost $orderCost)
+    {
+        $this->orderCost->removeElement($orderCost);
+    }
+
+    /**
+     * Get orderCost
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrderCost()
+    {
+        return $this->orderCost;
+    }
+
+    /**
+     * Set orderCost
+     *
+     * @param \AppBundle\Entity\OrderCost $orderCost
+     *
+     * @return RessourceType
+     */
+    public function setOrderCost(\AppBundle\Entity\OrderCost $orderCost = null)
+    {
+        $this->orderCost = $orderCost;
+
+        return $this;
+    }
+
+    /**
+     * Add ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     *
+     * @return RessourceType
+     */
+    public function addRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource[] = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     */
+    public function removeRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource->removeElement($ressource);
+    }
+
+    /**
+     * Get ressource
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessource()
+    {
+        return $this->ressource;
     }
 }
