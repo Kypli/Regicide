@@ -19,7 +19,13 @@ class PersonageFixtures extends Fixture
             $personage->setFirstName('FNom_personage'.$i);
             $personage->setLastName('LNom_personage'.$i);
             $personage->setInvention('');
-            $personage->setProvince('');
+            $personage->setGender('F');
+            $personage->setAge(30);
+            $personage->setPhoto(0);
+            $personage->setReceveiveMail(0);
+            $personage->setInsideBuilding(0);
+            $personage->setJob('non');
+            $personage->setJob2('non');
 
             $manager->persist($personage);
         }

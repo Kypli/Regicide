@@ -14,7 +14,7 @@ class Map
 {
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personage", inversedBy="mapPersonage")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="maps")
      */
     private $personage;
 
@@ -52,18 +52,11 @@ class Map
     private $id;
 
     /**
-     * @var int
+     * @var array
      *
-     * @ORM\Column(name="areaX", type="integer")
+     * @ORM\Column(name="coordinate", type="array")
      */
-    private $areaX;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="areaY", type="integer")
-     */
-    private $areaY;
+    private $coordinate;
 
     /**
      * @var int
@@ -105,51 +98,27 @@ class Map
     }
 
     /**
-     * Set areaX
+     * Set coordinate
      *
-     * @param integer $areaX
+     * @param integer $coordinate
      *
      * @return Map
      */
-    public function setAreaX($areaX)
+    public function setCoordinate($coordinate)
     {
-        $this->areaX = $areaX;
+        $this->coordinate = $coordinate;
 
         return $this;
     }
 
     /**
-     * Get areaX
+     * Get coordinate
      *
-     * @return int
+     * @return array
      */
-    public function getAreaX()
+    public function getCoordinate()
     {
-        return $this->areaX;
-    }
-
-    /**
-     * Set areaY
-     *
-     * @param integer $areaY
-     *
-     * @return Map
-     */
-    public function setAreaY($areaY)
-    {
-        $this->areaY = $areaY;
-
-        return $this;
-    }
-
-    /**
-     * Get areaY
-     *
-     * @return int
-     */
-    public function getAreaY()
-    {
-        return $this->areaY;
+        return $this->coordinate;
     }
 
     /**

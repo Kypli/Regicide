@@ -14,9 +14,9 @@ class Personage
 {
     /**
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Map", mappedBy="personage")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Map", inversedBy="personage")
      */
-    private $mapPersonage;
+    private $maps;
 
     /**
      *
@@ -93,13 +93,6 @@ class Personage
      * @ORM\Column(name="invention", type="string", length=255)
      */
     private $invention;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="province", type="string", length=255)
-     */
-    private $province;
 
     /**
      * @var string
@@ -263,24 +256,6 @@ class Personage
     public function setInvention(string $invention): Personage
     {
         $this->invention = $invention;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getProvince(): string
-    {
-        return $this->province;
-    }
-
-    /**
-     * @param string $province
-     * @return Personage
-     */
-    public function setProvince(string $province): Personage
-    {
-        $this->province = $province;
         return $this;
     }
 

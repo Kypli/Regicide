@@ -30,20 +30,6 @@ class PersonageStats
     /**
      * @var int
      *
-     * @ORM\Column(name="areaX", type="integer")
-     */
-    private $areaX;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="areaY", type="string", length=255)
-     */
-    private $areaY;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="vision", type="integer")
      */
     private $vision;
@@ -127,42 +113,6 @@ class PersonageStats
     public function setId(int $id): PersonageStats
     {
         $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAreaX(): int
-    {
-        return $this->areaX;
-    }
-
-    /**
-     * @param int $areaX
-     * @return PersonageStats
-     */
-    public function setAreaX(int $areaX): PersonageStats
-    {
-        $this->areaX = $areaX;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAreaY(): string
-    {
-        return $this->areaY;
-    }
-
-    /**
-     * @param string $areaY
-     * @return PersonageStats
-     */
-    public function setAreaY(string $areaY): PersonageStats
-    {
-        $this->areaY = $areaY;
         return $this;
     }
 
