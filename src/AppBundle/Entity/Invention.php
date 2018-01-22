@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Invention
 {
     /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PersonageInvention", mappedBy="invention")
+     */
+    private $personageInvention;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -216,5 +222,46 @@ class Invention
     public function getInventionProgress()
     {
         return $this->inventionProgress;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->personageInvention = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add personageInvention
+     *
+     * @param \AppBundle\Entity\PersonageInvention $personageInvention
+     *
+     * @return Invention
+     */
+    public function addPersonageInvention(\AppBundle\Entity\PersonageInvention $personageInvention)
+    {
+        $this->personageInvention[] = $personageInvention;
+
+        return $this;
+    }
+
+    /**
+     * Remove personageInvention
+     *
+     * @param \AppBundle\Entity\PersonageInvention $personageInvention
+     */
+    public function removePersonageInvention(\AppBundle\Entity\PersonageInvention $personageInvention)
+    {
+        $this->personageInvention->removeElement($personageInvention);
+    }
+
+    /**
+     * Get personageInvention
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPersonageInvention()
+    {
+        return $this->personageInvention;
     }
 }

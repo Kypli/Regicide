@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Clan
 {
-
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\ClanRank", mappedBy="clan")

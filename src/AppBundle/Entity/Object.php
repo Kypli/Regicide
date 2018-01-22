@@ -13,6 +13,30 @@ use Doctrine\ORM\Mapping as ORM;
 class Object
 {
     /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personage", inversedBy="object")
+     */
+    private $personage;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Map", inversedBy="object")
+     */
+    private $map;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Building", inversedBy="object")
+     */
+    private $building;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ObjectType", inversedBy="object")
+     */
+    private $objectType;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -185,5 +209,101 @@ class Object
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * Set objectType
+     *
+     * @param \AppBundle\Entity\ObjectType $objectType
+     *
+     * @return Object
+     */
+    public function setObjectType(\AppBundle\Entity\ObjectType $objectType = null)
+    {
+        $this->objectType = $objectType;
+
+        return $this;
+    }
+
+    /**
+     * Get objectType
+     *
+     * @return \AppBundle\Entity\ObjectType
+     */
+    public function getObjectType()
+    {
+        return $this->objectType;
+    }
+
+    /**
+     * Set personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     *
+     * @return Object
+     */
+    public function setPersonage(\AppBundle\Entity\Personage $personage = null)
+    {
+        $this->personage = $personage;
+
+        return $this;
+    }
+
+    /**
+     * Get personage
+     *
+     * @return \AppBundle\Entity\Personage
+     */
+    public function getPersonage()
+    {
+        return $this->personage;
+    }
+
+    /**
+     * Set map
+     *
+     * @param \AppBundle\Entity\Map $map
+     *
+     * @return Object
+     */
+    public function setMap(\AppBundle\Entity\Map $map = null)
+    {
+        $this->map = $map;
+
+        return $this;
+    }
+
+    /**
+     * Get map
+     *
+     * @return \AppBundle\Entity\Map
+     */
+    public function getMap()
+    {
+        return $this->map;
+    }
+
+    /**
+     * Set building
+     *
+     * @param \AppBundle\Entity\Building $building
+     *
+     * @return Object
+     */
+    public function setBuilding(\AppBundle\Entity\Building $building = null)
+    {
+        $this->building = $building;
+
+        return $this;
+    }
+
+    /**
+     * Get building
+     *
+     * @return \AppBundle\Entity\Building
+     */
+    public function getBuilding()
+    {
+        return $this->building;
     }
 }

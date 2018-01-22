@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class RapportError
 {
     /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Rapport", mappedBy="rapportError")
+     */
+    private $rapport;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -154,5 +160,46 @@ class RapportError
     public function getDescriptionCurrentOrder()
     {
         return $this->descriptionCurrentOrder;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rapport = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add rapport
+     *
+     * @param \AppBundle\Entity\Rapport $rapport
+     *
+     * @return RapportError
+     */
+    public function addRapport(\AppBundle\Entity\Rapport $rapport)
+    {
+        $this->rapport[] = $rapport;
+
+        return $this;
+    }
+
+    /**
+     * Remove rapport
+     *
+     * @param \AppBundle\Entity\Rapport $rapport
+     */
+    public function removeRapport(\AppBundle\Entity\Rapport $rapport)
+    {
+        $this->rapport->removeElement($rapport);
+    }
+
+    /**
+     * Get rapport
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRapport()
+    {
+        return $this->rapport;
     }
 }

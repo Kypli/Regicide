@@ -14,6 +14,18 @@ class Map
 {
     /**
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ressource", mappedBy="map")
+     */
+    private $ressource;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Object", mappedBy="map")
+     */
+    private $object;
+
+    /**
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="maps")
      */
     private $personage;
@@ -35,12 +47,6 @@ class Map
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Building", mappedBy="location")
      */
     private $locationMap;
-
-    /**
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\BuildingInside", mappedBy="locationInside")
-     */
-    private $locationMapInside;
 
     /**
      * @var int
@@ -86,6 +92,16 @@ class Map
      */
     private $owner;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->personage = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ressource = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->object = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -360,13 +376,6 @@ class Map
     {
         return $this->mapType;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->personage = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add personage
@@ -383,6 +392,20 @@ class Map
     }
 
     /**
+     * Add ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     *
+     * @return Map
+     */
+    public function addRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource[] = $ressource;
+
+        return $this;
+    }
+
+    /**
      * Remove personage
      *
      * @param \AppBundle\Entity\Personage $personage
@@ -390,5 +413,59 @@ class Map
     public function removePersonage(\AppBundle\Entity\Personage $personage)
     {
         $this->personage->removeElement($personage);
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     */
+    public function removeRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource->removeElement($ressource);
+    }
+
+    /**
+     * Get ressource
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessource()
+    {
+        return $this->ressource;
+    }
+
+    /**
+     * Add object
+     *
+     * @param \AppBundle\Entity\Object $object
+     *
+     * @return Map
+     */
+    public function addObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object[] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Remove object
+     *
+     * @param \AppBundle\Entity\Object $object
+     */
+    public function removeObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object->removeElement($object);
+    }
+
+    /**
+     * Get object
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObject()
+    {
+        return $this->object;
     }
 }

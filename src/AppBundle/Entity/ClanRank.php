@@ -216,4 +216,35 @@ class ClanRank
     {
         return $this->clan;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->clan = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add clan
+     *
+     * @param \AppBundle\Entity\Clan $clan
+     *
+     * @return ClanRank
+     */
+    public function addClan(\AppBundle\Entity\Clan $clan)
+    {
+        $this->clan[] = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Remove clan
+     *
+     * @param \AppBundle\Entity\Clan $clan
+     */
+    public function removeClan(\AppBundle\Entity\Clan $clan)
+    {
+        $this->clan->removeElement($clan);
+    }
 }

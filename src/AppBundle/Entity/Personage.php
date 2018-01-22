@@ -14,13 +14,31 @@ class Personage
 {
     /**
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ressource", mappedBy="personage")
+     */
+    private $ressource;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Object", mappedBy="personage")
+     */
+    private $object;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rapport", inversedBy="personage")
+     */
+    private $rapport;
+
+    /**
+     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Map", inversedBy="personage")
      */
     private $maps;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Player", inversedBy="personagePlayer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Player", inversedBy="personage")
      */
     private $player;
 
@@ -29,6 +47,12 @@ class Personage
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonageStats", inversedBy="personage")
      */
     private $personageStats;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PersonageInvention", mappedBy="personage")
+     */
+    private $personageInvention;
 
     /**
      *
@@ -115,22 +139,13 @@ class Personage
      */
     private $insideBuilding;
 
+
     /**
      * @return int
      */
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     * @return Personage
-     */
-    public function setId(int $id): Personage
-    {
-        $this->id = $id;
-        return $this;
     }
 
     /**
@@ -314,49 +329,6 @@ class Personage
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->mapPersonage = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add mapPersonage
-     *
-     * @param \AppBundle\Entity\Map $mapPersonage
-     *
-     * @return Personage
-     */
-    public function addMapPersonage(\AppBundle\Entity\Map $mapPersonage)
-    {
-        $this->mapPersonage[] = $mapPersonage;
-
-        return $this;
-    }
-
-    /**
-     * Remove mapPersonage
-     *
-     * @param \AppBundle\Entity\Map $mapPersonage
-     */
-    public function removeMapPersonage(\AppBundle\Entity\Map $mapPersonage)
-    {
-        $this->mapPersonage->removeElement($mapPersonage);
-    }
-
-    /**
-     * Get mapPersonage
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMapPersonage()
-    {
-        return $this->mapPersonage;
-    }
-
-
-    /**
      * Get photo
      *
      * @return boolean
@@ -463,6 +435,20 @@ class Personage
     }
 
     /**
+     * Set rapport
+     *
+     * @param \AppBundle\Entity\Rapport $rapport
+     *
+     * @return Personage
+     */
+    public function setRapport(\AppBundle\Entity\Rapport $rapport = null)
+    {
+        $this->rapport = $rapport;
+
+        return $this;
+    }
+
+    /**
      * Get maps
      *
      * @return \AppBundle\Entity\Map
@@ -470,5 +456,140 @@ class Personage
     public function getMaps()
     {
         return $this->maps;
+    }
+
+    /**
+     * Get rapport
+     *
+     * @return \AppBundle\Entity\Rapport
+     */
+    public function getRapport()
+    {
+        return $this->rapport;
+    }
+
+    /**
+     * Add ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     *
+     * @return Personage
+     */
+    public function addRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource[] = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     */
+    public function removeRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource->removeElement($ressource);
+    }
+
+    /**
+     * Get ressource
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessource()
+    {
+        return $this->ressource;
+    }
+
+    /**
+     * Add object
+     *
+     * @param \AppBundle\Entity\Object $object
+     *
+     * @return Personage
+     */
+    public function addObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object[] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Remove object
+     *
+     * @param \AppBundle\Entity\Object $object
+     */
+    public function removeObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object->removeElement($object);
+    }
+
+    /**
+     * Get object
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObject()
+    {
+        return $this->object;
+    }
+
+    /**
+     * Set personageInvention
+     *
+     * @param \AppBundle\Entity\PersonageInvention $personageInvention
+     *
+     * @return Personage
+     */
+    public function setPersonageInvention(\AppBundle\Entity\PersonageInvention $personageInvention = null)
+    {
+        $this->personageInvention = $personageInvention;
+
+        return $this;
+    }
+
+    /**
+     * Get personageInvention
+     *
+     * @return \AppBundle\Entity\PersonageInvention
+     */
+    public function getPersonageInvention()
+    {
+        return $this->personageInvention;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ressource = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->object = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->personageInvention = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add personageInvention
+     *
+     * @param \AppBundle\Entity\PersonageInvention $personageInvention
+     *
+     * @return Personage
+     */
+    public function addPersonageInvention(\AppBundle\Entity\PersonageInvention $personageInvention)
+    {
+        $this->personageInvention[] = $personageInvention;
+
+        return $this;
+    }
+
+    /**
+     * Remove personageInvention
+     *
+     * @param \AppBundle\Entity\PersonageInvention $personageInvention
+     */
+    public function removePersonageInvention(\AppBundle\Entity\PersonageInvention $personageInvention)
+    {
+        $this->personageInvention->removeElement($personageInvention);
     }
 }

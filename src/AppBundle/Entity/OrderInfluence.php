@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class OrderInfluence
 {
     /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Orderr", mappedBy="orderInfluence")
+     */
+    private $orderr;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -140,6 +146,14 @@ class OrderInfluence
      */
     private $limitProvince;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderr = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -569,6 +583,55 @@ class OrderInfluence
     public function setLimitPlayer($limitPlayer)
     {
         $this->limitPlayer = $limitPlayer;
+
+        return $this;
+    }
+
+
+    /**
+     * Add orderr
+     *
+     * @param \AppBundle\Entity\Orderr $orderr
+     *
+     * @return OrderInfluence
+     */
+    public function addOrderr(\AppBundle\Entity\Orderr $orderr)
+    {
+        $this->orderr[] = $orderr;
+
+        return $this;
+    }
+
+    /**
+     * Remove orderr
+     *
+     * @param \AppBundle\Entity\Orderr $orderr
+     */
+    public function removeOrderr(\AppBundle\Entity\Orderr $orderr)
+    {
+        $this->orderr->removeElement($orderr);
+    }
+
+    /**
+     * Get orderr
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrderr()
+    {
+        return $this->orderr;
+    }
+
+    /**
+     * Set orderr
+     *
+     * @param \AppBundle\Entity\Orderr $orderr
+     *
+     * @return OrderInfluence
+     */
+    public function setOrderr(\AppBundle\Entity\Orderr $orderr = null)
+    {
+        $this->orderr = $orderr;
 
         return $this;
     }
