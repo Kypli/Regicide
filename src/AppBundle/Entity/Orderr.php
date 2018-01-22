@@ -156,4 +156,3 @@ class Orderr
         return $this->intuition;
     }
 }
-

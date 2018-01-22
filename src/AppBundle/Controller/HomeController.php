@@ -17,12 +17,18 @@ class HomeController extends Controller
         // Doctrine
         $em = $this->getDoctrine()->getManager();
 
-        // Map
-        $specie = $em->getRepository('AppBundle:Map')
-            ->findBy(['name' => $session->get('specie')], array(), null, 0);
+        // Player
+        $player = $em->getRepository('AppBundle:Map')
+            ->findOneBy(['firstName' => 'FNom_player1']);
 
+        var_dump($player);
+
+        // Map
+        $map = $em->getRepository('AppBundle:Map')
+            ->findBy(['name' => ''], array(), null, 0);
 
         return $this->render('default/index.html.twig', [
+            'player' => $player,
             'map' => $map,
         ]);
     }

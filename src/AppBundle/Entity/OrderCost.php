@@ -311,4 +311,3 @@ class OrderCost
         return $this->res5Quantity;
     }
 }
-

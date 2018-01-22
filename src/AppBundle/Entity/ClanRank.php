@@ -14,7 +14,7 @@ class ClanRank
 {
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Clan", inversedBy="clanRank")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Clan", inversedBy="clanRanks")
      */
     private $clan;
 

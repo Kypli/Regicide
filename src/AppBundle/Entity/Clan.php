@@ -15,9 +15,9 @@ class Clan
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClanRank", mappedBy="clan")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ClanRank", mappedBy="clan")
      */
-    private $clanRank;
+    private $clanRanks;
 
     /**
      *
@@ -127,7 +127,7 @@ class Clan
      */
     public function setClanRank(\AppBundle\Entity\ClanRank $clanRank = null)
     {
-        $this->clanRank = $clanRank;
+        $this->clanRanks = $clanRank;
 
         return $this;
     }
@@ -139,6 +139,40 @@ class Clan
      */
     public function getClanRank()
     {
-        return $this->clanRank;
+        return $this->clanRanks;
+    }
+
+    /**
+     * Add clanRank
+     *
+     * @param \AppBundle\Entity\ClanRank $clanRank
+     *
+     * @return Clan
+     */
+    public function addClanRank(\AppBundle\Entity\ClanRank $clanRank)
+    {
+        $this->clanRanks[] = $clanRank;
+
+        return $this;
+    }
+
+    /**
+     * Remove clanRank
+     *
+     * @param \AppBundle\Entity\ClanRank $clanRank
+     */
+    public function removeClanRank(\AppBundle\Entity\ClanRank $clanRank)
+    {
+        $this->clanRanks->removeElement($clanRank);
+    }
+
+    /**
+     * Get clanRanks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClanRanks()
+    {
+        return $this->clanRanks;
     }
 }

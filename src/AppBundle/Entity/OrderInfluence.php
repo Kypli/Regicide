@@ -558,5 +558,18 @@ class OrderInfluence
     {
         return $this->limitProvince;
     }
-}
 
+    /**
+     * Set limitPlayer
+     *
+     * @param integer $limitPlayer
+     *
+     * @return OrderInfluence
+     */
+    public function setLimitPlayer($limitPlayer)
+    {
+        $this->limitPlayer = $limitPlayer;
+
+        return $this;
+    }
+}

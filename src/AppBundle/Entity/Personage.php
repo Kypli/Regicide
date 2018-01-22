@@ -447,4 +447,28 @@ class Personage
     {
         return $this->insideBuilding;
     }
+
+    /**
+     * Set maps
+     *
+     * @param \AppBundle\Entity\Map $maps
+     *
+     * @return Personage
+     */
+    public function setMaps(\AppBundle\Entity\Map $maps = null)
+    {
+        $this->maps = $maps;
+
+        return $this;
+    }
+
+    /**
+     * Get maps
+     *
+     * @return \AppBundle\Entity\Map
+     */
+    public function getMaps()
+    {
+        return $this->maps;
+    }
 }

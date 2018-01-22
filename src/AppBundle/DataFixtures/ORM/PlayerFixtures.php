@@ -1,10 +1,12 @@
 <?php
 
-namespace AppBundle\DataFixtures;
+namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Player;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+
 
 class PlayerFixtures extends Fixture
 {
@@ -21,10 +23,15 @@ class PlayerFixtures extends Fixture
             $player->setPassword('123');
             $player->setArrangement('nom');
             $player->setArrangementOrder('ASC');
+            $player->setAreaXmax(5);
+            $player->setAreaYmax(5);
+            $this->addReference('player'.$i, $player);
 
             $manager->persist($player);
         }
 
         $manager->flush();
     }
+
+
 }

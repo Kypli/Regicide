@@ -360,4 +360,35 @@ class Map
     {
         return $this->mapType;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->personage = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     *
+     * @return Map
+     */
+    public function addPersonage(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personage[] = $personage;
+
+        return $this;
+    }
+
+    /**
+     * Remove personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     */
+    public function removePersonage(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personage->removeElement($personage);
+    }
 }
