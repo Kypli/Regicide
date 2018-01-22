@@ -13,9 +13,23 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+
+        // Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Player
+        $player = $em->getRepository('AppBundle:Map')
+            ->findOneBy(['firstName' => 'FNom_player1']);
+
+        var_dump($player);
+
+        // Map
+        $map = $em->getRepository('AppBundle:Map')
+            ->findBy(['name' => ''], array(), null, 0);
+
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'player' => $player,
+            'map' => $map,
         ]);
     }
 }

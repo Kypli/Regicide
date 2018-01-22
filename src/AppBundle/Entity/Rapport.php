@@ -13,6 +13,24 @@ use Doctrine\ORM\Mapping as ORM;
 class Rapport
 {
     /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="rapport")
+     */
+    private $personage;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\RapportValid", inversedBy="rapport")
+     */
+    private $rapportValid;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\RapportError", inversedBy="rapport")
+     */
+    private $rapportError;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -526,5 +544,94 @@ class Rapport
     public function getDate()
     {
         return $this->date;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->personage = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     *
+     * @return Rapport
+     */
+    public function addPersonage(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personage[] = $personage;
+
+        return $this;
+    }
+
+    /**
+     * Remove personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     */
+    public function removePersonage(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personage->removeElement($personage);
+    }
+
+    /**
+     * Get personage
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPersonage()
+    {
+        return $this->personage;
+    }
+
+    /**
+     * Set rapportValid
+     *
+     * @param \AppBundle\Entity\RapportValid $rapportValid
+     *
+     * @return Rapport
+     */
+    public function setRapportValid(\AppBundle\Entity\RapportValid $rapportValid = null)
+    {
+        $this->rapportValid = $rapportValid;
+
+        return $this;
+    }
+
+    /**
+     * Get rapportValid
+     *
+     * @return \AppBundle\Entity\RapportValid
+     */
+    public function getRapportValid()
+    {
+        return $this->rapportValid;
+    }
+
+    /**
+     * Set rapportError
+     *
+     * @param \AppBundle\Entity\RapportError $rapportError
+     *
+     * @return Rapport
+     */
+    public function setRapportError(\AppBundle\Entity\RapportError $rapportError = null)
+    {
+        $this->rapportError = $rapportError;
+
+        return $this;
+    }
+
+    /**
+     * Get rapportError
+     *
+     * @return \AppBundle\Entity\RapportError
+     */
+    public function getRapportError()
+    {
+        return $this->rapportError;
     }
 }

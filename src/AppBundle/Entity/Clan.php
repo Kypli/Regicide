@@ -14,6 +14,12 @@ class Clan
 {
     /**
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ClanRank", mappedBy="clan")
+     */
+    private $clanRanks;
+
+    /**
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="clan")
      */
     private $personageClan;
@@ -68,4 +74,105 @@ class Clan
     {
         return $this->name;
     }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->personageClan = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add personageClan
+     *
+     * @param \AppBundle\Entity\Personage $personageClan
+     *
+     * @return Clan
+     */
+    public function addPersonageClan(\AppBundle\Entity\Personage $personageClan)
+    {
+        $this->personageClan[] = $personageClan;
+
+        return $this;
+    }
+
+    /**
+     * Remove personageClan
+     *
+     * @param \AppBundle\Entity\Personage $personageClan
+     */
+    public function removePersonageClan(\AppBundle\Entity\Personage $personageClan)
+    {
+        $this->personageClan->removeElement($personageClan);
+    }
+
+    /**
+     * Get personageClan
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPersonageClan()
+    {
+        return $this->personageClan;
+    }
+
+    /**
+     * Set clanRank
+     *
+     * @param \AppBundle\Entity\ClanRank $clanRank
+     *
+     * @return Clan
+     */
+    public function setClanRank(\AppBundle\Entity\ClanRank $clanRank = null)
+    {
+        $this->clanRanks = $clanRank;
+
+        return $this;
+    }
+
+    /**
+     * Get clanRank
+     *
+     * @return \AppBundle\Entity\ClanRank
+     */
+    public function getClanRank()
+    {
+        return $this->clanRanks;
+    }
+
+    /**
+     * Add clanRank
+     *
+     * @param \AppBundle\Entity\ClanRank $clanRank
+     *
+     * @return Clan
+     */
+    public function addClanRank(\AppBundle\Entity\ClanRank $clanRank)
+    {
+        $this->clanRanks[] = $clanRank;
+
+        return $this;
+    }
+
+    /**
+     * Remove clanRank
+     *
+     * @param \AppBundle\Entity\ClanRank $clanRank
+     */
+    public function removeClanRank(\AppBundle\Entity\ClanRank $clanRank)
+    {
+        $this->clanRanks->removeElement($clanRank);
+    }
+
+    /**
+     * Get clanRanks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClanRanks()
+    {
+        return $this->clanRanks;
+    }
+
 }

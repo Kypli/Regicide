@@ -14,6 +14,24 @@ class Building
 {
     /**
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ressource", mappedBy="building")
+     */
+    private $ressource;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Object", mappedBy="building")
+     */
+    private $object;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\BuildingInside", mappedBy="buildingInside")
+     */
+    private $building;
+
+    /**
+     *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Map", inversedBy="locationMap")
      */
     private $location;
@@ -363,5 +381,97 @@ class Building
     public function getBuildingType()
     {
         return $this->buildingType;
+    }
+
+    /**
+     * Add ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     *
+     * @return Building
+     */
+    public function addRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource[] = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     */
+    public function removeRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource->removeElement($ressource);
+    }
+
+    /**
+     * Get ressource
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessource()
+    {
+        return $this->ressource;
+    }
+
+    /**
+     * Add object
+     *
+     * @param \AppBundle\Entity\Object $object
+     *
+     * @return Building
+     */
+    public function addObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object[] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Remove object
+     *
+     * @param \AppBundle\Entity\Object $object
+     */
+    public function removeObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object->removeElement($object);
+    }
+
+    /**
+     * Get object
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObject()
+    {
+        return $this->object;
+    }
+
+    /**
+     * Set building
+     *
+     * @param \AppBundle\Entity\BuildingInside $building
+     *
+     * @return Building
+     */
+    public function setBuilding(\AppBundle\Entity\BuildingInside $building = null)
+    {
+        $this->building = $building;
+
+        return $this;
+    }
+
+    /**
+     * Get building
+     *
+     * @return \AppBundle\Entity\BuildingInside
+     */
+    public function getBuilding()
+    {
+        return $this->building;
     }
 }

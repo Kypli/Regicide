@@ -14,9 +14,9 @@ class BuildingInside
 {
     /**
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Map", inversedBy="locationMapInside")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Building", inversedBy="building")
      */
-    private $locationInside;
+    private $buildingInside;
 
     /**
      *
@@ -91,4 +91,28 @@ class BuildingInside
         return $this->locationInside;
     }
 
+
+    /**
+     * Set buildingInside
+     *
+     * @param \AppBundle\Entity\Building $buildingInside
+     *
+     * @return BuildingInside
+     */
+    public function setBuildingInside(\AppBundle\Entity\Building $buildingInside = null)
+    {
+        $this->buildingInside = $buildingInside;
+
+        return $this;
+    }
+
+    /**
+     * Get buildingInside
+     *
+     * @return \AppBundle\Entity\Building
+     */
+    public function getBuildingInside()
+    {
+        return $this->buildingInside;
+    }
 }

@@ -14,7 +14,19 @@ class Map
 {
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personage", inversedBy="mapPersonage")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ressource", mappedBy="map")
+     */
+    private $ressource;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Object", mappedBy="map")
+     */
+    private $object;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="maps")
      */
     private $personage;
 
@@ -37,12 +49,6 @@ class Map
     private $locationMap;
 
     /**
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\BuildingInside", mappedBy="locationInside")
-     */
-    private $locationMapInside;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -52,18 +58,11 @@ class Map
     private $id;
 
     /**
-     * @var int
+     * @var array
      *
-     * @ORM\Column(name="areaX", type="integer")
+     * @ORM\Column(name="coordinate", type="array")
      */
-    private $areaX;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="areaY", type="integer")
-     */
-    private $areaY;
+    private $coordinate;
 
     /**
      * @var int
@@ -95,6 +94,16 @@ class Map
 
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->personage = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ressource = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->object = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -105,51 +114,27 @@ class Map
     }
 
     /**
-     * Set areaX
+     * Set coordinate
      *
-     * @param integer $areaX
+     * @param integer $coordinate
      *
      * @return Map
      */
-    public function setAreaX($areaX)
+    public function setCoordinate($coordinate)
     {
-        $this->areaX = $areaX;
+        $this->coordinate = $coordinate;
 
         return $this;
     }
 
     /**
-     * Get areaX
+     * Get coordinate
      *
-     * @return int
+     * @return array
      */
-    public function getAreaX()
+    public function getCoordinate()
     {
-        return $this->areaX;
-    }
-
-    /**
-     * Set areaY
-     *
-     * @param integer $areaY
-     *
-     * @return Map
-     */
-    public function setAreaY($areaY)
-    {
-        $this->areaY = $areaY;
-
-        return $this;
-    }
-
-    /**
-     * Get areaY
-     *
-     * @return int
-     */
-    public function getAreaY()
-    {
-        return $this->areaY;
+        return $this->coordinate;
     }
 
     /**
@@ -390,5 +375,97 @@ class Map
     public function getMapType()
     {
         return $this->mapType;
+    }
+
+    /**
+     * Add personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     *
+     * @return Map
+     */
+    public function addPersonage(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personage[] = $personage;
+
+        return $this;
+    }
+
+    /**
+     * Add ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     *
+     * @return Map
+     */
+    public function addRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource[] = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Remove personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     */
+    public function removePersonage(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personage->removeElement($personage);
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \AppBundle\Entity\Ressource $ressource
+     */
+    public function removeRessource(\AppBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource->removeElement($ressource);
+    }
+
+    /**
+     * Get ressource
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessource()
+    {
+        return $this->ressource;
+    }
+
+    /**
+     * Add object
+     *
+     * @param \AppBundle\Entity\Object $object
+     *
+     * @return Map
+     */
+    public function addObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object[] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Remove object
+     *
+     * @param \AppBundle\Entity\Object $object
+     */
+    public function removeObject(\AppBundle\Entity\Object $object)
+    {
+        $this->object->removeElement($object);
+    }
+
+    /**
+     * Get object
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObject()
+    {
+        return $this->object;
     }
 }

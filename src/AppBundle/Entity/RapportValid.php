@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class RapportValid
 {
     /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Rapport", mappedBy="rapportValid")
+     */
+    private $rapport;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -216,5 +222,46 @@ class RapportValid
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rapport = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add rapport
+     *
+     * @param \AppBundle\Entity\Rapport $rapport
+     *
+     * @return RapportValid
+     */
+    public function addRapport(\AppBundle\Entity\Rapport $rapport)
+    {
+        $this->rapport[] = $rapport;
+
+        return $this;
+    }
+
+    /**
+     * Remove rapport
+     *
+     * @param \AppBundle\Entity\Rapport $rapport
+     */
+    public function removeRapport(\AppBundle\Entity\Rapport $rapport)
+    {
+        $this->rapport->removeElement($rapport);
+    }
+
+    /**
+     * Get rapport
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRapport()
+    {
+        return $this->rapport;
     }
 }
