@@ -22,7 +22,7 @@ class Province
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Map", mappedBy="province")
      */
-    private $provinceMap;
+    private $map;
 
     /**
      * @var int
@@ -262,5 +262,39 @@ class Province
     public function getProvinceMap()
     {
         return $this->provinceMap;
+    }
+
+    /**
+     * Add map
+     *
+     * @param \AppBundle\Entity\Map $map
+     *
+     * @return Province
+     */
+    public function addMap(\AppBundle\Entity\Map $map)
+    {
+        $this->map[] = $map;
+
+        return $this;
+    }
+
+    /**
+     * Remove map
+     *
+     * @param \AppBundle\Entity\Map $map
+     */
+    public function removeMap(\AppBundle\Entity\Map $map)
+    {
+        $this->map->removeElement($map);
+    }
+
+    /**
+     * Get map
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMap()
+    {
+        return $this->map;
     }
 }

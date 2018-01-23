@@ -14,6 +14,18 @@ class Map
 {
     /**
      *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Province", inversedBy="map")
+     */
+    private $province;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MapType", inversedBy="map")
+     */
+    private $mapType;
+
+    /**
+     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ressource", mappedBy="map")
      */
     private $ressource;
@@ -26,27 +38,15 @@ class Map
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="maps")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="map")
      */
-    private $personage;
+    private $personages;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Province", inversedBy="provinceMap")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Building", mappedBy="map")
      */
-    private $province;
-
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MapType", inversedBy="map")
-     */
-    private $mapType;
-
-    /**
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Building", mappedBy="location")
-     */
-    private $locationMap;
+    private $building;
 
     /**
      * @var int
@@ -63,20 +63,6 @@ class Map
      * @ORM\Column(name="coordinate", type="array")
      */
     private $coordinate;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="presence", type="integer")
-     */
-    private $presence;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="level", type="integer")
-     */
-    private $level;
 
     /**
      * @var int
@@ -98,7 +84,7 @@ class Map
      */
     public function __construct()
     {
-        $this->personage = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->personages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ressource = new \Doctrine\Common\Collections\ArrayCollection();
         $this->object = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -135,78 +121,6 @@ class Map
     public function getCoordinate()
     {
         return $this->coordinate;
-    }
-
-    /**
-     * Set presence
-     *
-     * @param integer $presence
-     *
-     * @return Map
-     */
-    public function setPresence($presence)
-    {
-        $this->presence = $presence;
-
-        return $this;
-    }
-
-    /**
-     * Get presence
-     *
-     * @return int
-     */
-    public function getPresence()
-    {
-        return $this->presence;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Map
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set level
-     *
-     * @param integer $level
-     *
-     * @return Map
-     */
-    public function setLevel($level)
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
-    /**
-     * Get level
-     *
-     * @return int
-     */
-    public function getLevel()
-    {
-        return $this->level;
     }
 
     /**
@@ -258,78 +172,6 @@ class Map
     }
 
     /**
-     * Set locationMap
-     *
-     * @param \AppBundle\Entity\Building $locationMap
-     *
-     * @return Map
-     */
-    public function setLocationMap(\AppBundle\Entity\Building $locationMap = null)
-    {
-        $this->locationMap = $locationMap;
-
-        return $this;
-    }
-
-    /**
-     * Get locationMap
-     *
-     * @return \AppBundle\Entity\Building
-     */
-    public function getLocationMap()
-    {
-        return $this->locationMap;
-    }
-
-    /**
-     * Set locationMapInside
-     *
-     * @param \AppBundle\Entity\BuildingInside $locationMapInside
-     *
-     * @return Map
-     */
-    public function setLocationMapInside(\AppBundle\Entity\Building $locationMapInside = null)
-    {
-        $this->locationMapInside = $locationMapInside;
-
-        return $this;
-    }
-
-    /**
-     * Get locationMapInside
-     *
-     * @return \AppBundle\Entity\BuildingInside
-     */
-    public function getLocationMapInside()
-    {
-        return $this->locationMapInside;
-    }
-
-    /**
-     * Set personage
-     *
-     * @param \AppBundle\Entity\Personage $personage
-     *
-     * @return Map
-     */
-    public function setPersonage(\AppBundle\Entity\Personage $personage = null)
-    {
-        $this->personage = $personage;
-
-        return $this;
-    }
-
-    /**
-     * Get personage
-     *
-     * @return \AppBundle\Entity\Personage
-     */
-    public function getPersonage()
-    {
-        return $this->personage;
-    }
-
-    /**
      * Set province
      *
      * @param \AppBundle\Entity\Province $province
@@ -378,17 +220,13 @@ class Map
     }
 
     /**
-     * Add personage
+     * Get ressource
      *
-     * @param \AppBundle\Entity\Personage $personage
-     *
-     * @return Map
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function addPersonage(\AppBundle\Entity\Personage $personage)
+    public function getRessource()
     {
-        $this->personage[] = $personage;
-
-        return $this;
+        return $this->ressource;
     }
 
     /**
@@ -406,16 +244,6 @@ class Map
     }
 
     /**
-     * Remove personage
-     *
-     * @param \AppBundle\Entity\Personage $personage
-     */
-    public function removePersonage(\AppBundle\Entity\Personage $personage)
-    {
-        $this->personage->removeElement($personage);
-    }
-
-    /**
      * Remove ressource
      *
      * @param \AppBundle\Entity\Ressource $ressource
@@ -426,13 +254,13 @@ class Map
     }
 
     /**
-     * Get ressource
+     * Get object
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getRessource()
+    public function getObject()
     {
-        return $this->ressource;
+        return $this->object;
     }
 
     /**
@@ -460,12 +288,98 @@ class Map
     }
 
     /**
-     * Get object
+     * Get personages
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \AppBundle\Entity\Personage
      */
-    public function getObject()
+    public function getPersonages()
     {
-        return $this->object;
+        return $this->personages;
+    }
+
+    /**
+     * Add personages
+     *
+     * @param \AppBundle\Entity\Personage $personages
+     *
+     * @return Map
+     */
+    public function addPersonages(\AppBundle\Entity\Personage $personages)
+    {
+        $this->personages[] = $personages;
+
+        return $this;
+    }
+
+    /**
+     * Remove personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     */
+    public function removePersonages(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personages->removeElement($personage);
+    }
+
+    /**
+     * Set building
+     *
+     * @param \AppBundle\Entity\Building $building
+     *
+     * @return Map
+     */
+    public function setLocationMap(\AppBundle\Entity\Building $building = null)
+    {
+        $this->building = $building;
+
+        return $this;
+    }
+
+    /**
+     * Get building
+     *
+     * @return \AppBundle\Entity\Building
+     */
+    public function getBuilding()
+    {
+        return $this->building;
+    }
+
+    /**
+     * Add personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     *
+     * @return Map
+     */
+    public function addPersonage(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personages[] = $personage;
+
+        return $this;
+    }
+
+    /**
+     * Remove personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     */
+    public function removePersonage(\AppBundle\Entity\Personage $personage)
+    {
+        $this->personages->removeElement($personage);
+    }
+
+    /**
+     * Set building
+     *
+     * @param \AppBundle\Entity\Building $building
+     *
+     * @return Map
+     */
+    public function setBuilding(\AppBundle\Entity\Building $building = null)
+    {
+        $this->building = $building;
+
+        return $this;
     }
 }

@@ -32,9 +32,9 @@ class Personage
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Map", inversedBy="personage")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Map", inversedBy="personages")
      */
-    private $maps;
+    private $map;
 
     /**
      *
@@ -139,6 +139,16 @@ class Personage
      */
     private $insideBuilding;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ressource = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->object = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->personageInvention = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * @return int
@@ -421,15 +431,15 @@ class Personage
     }
 
     /**
-     * Set maps
+     * Set map
      *
-     * @param \AppBundle\Entity\Map $maps
+     * @param \AppBundle\Entity\Map $map
      *
      * @return Personage
      */
-    public function setMaps(\AppBundle\Entity\Map $maps = null)
+    public function setMap(\AppBundle\Entity\Map $map = null)
     {
-        $this->maps = $maps;
+        $this->map = $map;
 
         return $this;
     }
@@ -449,13 +459,13 @@ class Personage
     }
 
     /**
-     * Get maps
+     * Get map
      *
      * @return \AppBundle\Entity\Map
      */
-    public function getMaps()
+    public function getMap()
     {
-        return $this->maps;
+        return $this->map;
     }
 
     /**
@@ -558,15 +568,6 @@ class Personage
     public function getPersonageInvention()
     {
         return $this->personageInvention;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ressource = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->object = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->personageInvention = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
