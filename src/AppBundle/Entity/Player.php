@@ -26,7 +26,7 @@ class Player
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="player")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Personage", mappedBy="player")
      */
     private $personage;
 
@@ -359,14 +359,6 @@ class Player
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->personagePlayer = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Get active
      *
      * @return boolean
@@ -510,5 +502,27 @@ class Player
     public function getPersonage()
     {
         return $this->personage;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->mailPlayer = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->minitchatPlayer = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set personage
+     *
+     * @param \AppBundle\Entity\Personage $personage
+     *
+     * @return Player
+     */
+    public function setPersonage(\AppBundle\Entity\Personage $personage = null)
+    {
+        $this->personage = $personage;
+
+        return $this;
     }
 }

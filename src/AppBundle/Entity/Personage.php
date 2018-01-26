@@ -38,7 +38,7 @@ class Personage
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Player", inversedBy="personage")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Player", inversedBy="personage")
      */
     private $player;
 
@@ -74,7 +74,7 @@ class Personage
      *
      * @ORM\Column(name="firstName", type="string", length=255)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var string
@@ -592,5 +592,9 @@ class Personage
     public function removePersonageInvention(\AppBundle\Entity\PersonageInvention $personageInvention)
     {
         $this->personageInvention->removeElement($personageInvention);
+    }
+
+    public function __toString() {
+        return $this->map;
     }
 }

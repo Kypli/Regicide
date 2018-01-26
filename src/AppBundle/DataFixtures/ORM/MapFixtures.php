@@ -16,19 +16,20 @@ class MapFixtures extends Fixture
     {
 
         // X
-        for ($x = 1; $x <= 8; $x++) {
+        for ($x = 1; $x <= 12; $x++) {
 
             // Y
-            for ($y = 1; $y <= 8; $y++) {
+            for ($y = 1; $y <= 12; $y++) {
 
                 $map = new Map();
-                $map->setCoordinate([$x, $y]);
+                $map->setCoordinateX($x);
+                $map->setCoordinateY($y);
                 $map->setQuality(50);
                 $map->setOwner('public');
                 $map->setMapType($this->getReference('carte1'));
 
-                if ($x == 1 && $y == 1) {
-                    $map->addPersonages($this->getReference('personage1'));
+                if ($x == 11 && $y == 10) {
+                    $this->addReference('map', $map);
                 }
 
                 $manager->persist($map);
@@ -41,7 +42,6 @@ class MapFixtures extends Fixture
     public function getDependencies()
     {
         return array(
-            PersonageFixtures::class,
             MapTypeFixtures::class,
         );
     }

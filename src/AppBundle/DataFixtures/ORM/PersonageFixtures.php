@@ -6,6 +6,7 @@ use AppBundle\Entity\Personage;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\DataFixtures\ORM\PlayerFixtures;
+use AppBundle\DataFixtures\ORM\MapFixtures;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 
@@ -27,6 +28,9 @@ class PersonageFixtures extends Fixture
             $personage->setJob('non');
             $personage->setJob2('non');
             $personage->setPlayer($this->getReference('player'.$i));
+            if ($i == 1) {
+                $personage->setMap($this->getReference('map'));
+            }
             $this->addReference('personage'.$i, $personage);
 
             $manager->persist($personage);
@@ -38,6 +42,7 @@ class PersonageFixtures extends Fixture
     public function getDependencies()
     {
         return array(
+            MapFixtures::class,
             PlayerFixtures::class,
         );
     }

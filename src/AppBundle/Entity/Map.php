@@ -58,11 +58,18 @@ class Map
     private $id;
 
     /**
-     * @var array
+     * @var int
      *
-     * @ORM\Column(name="coordinate", type="array")
+     * @ORM\Column(name="coordinateX", type="integer")
      */
-    private $coordinate;
+    private $coordinateX;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="coordinateY", type="integer")
+     */
+    private $coordinateY;
 
     /**
      * @var int
@@ -100,27 +107,51 @@ class Map
     }
 
     /**
-     * Set coordinate
+     * Set coordinateX
      *
-     * @param integer $coordinate
+     * @param integer $coordinateX
      *
      * @return Map
      */
-    public function setCoordinate($coordinate)
+    public function setCoordinateX($coordinateX)
     {
-        $this->coordinate = $coordinate;
+        $this->coordinateX = $coordinateX;
 
         return $this;
     }
 
     /**
-     * Get coordinate
+     * Get coordinateX
      *
-     * @return array
+     * @return integer
      */
-    public function getCoordinate()
+    public function getCoordinateX()
     {
-        return $this->coordinate;
+        return $this->coordinateX;
+    }
+
+    /**
+     * Set coordinateY
+     *
+     * @param integer $coordinateY
+     *
+     * @return Map
+     */
+    public function setCoordinateY($coordinateY)
+    {
+        $this->coordinateY = $coordinateY;
+
+        return $this;
+    }
+
+    /**
+     * Get coordinateX
+     *
+     * @return integer
+     */
+    public function getCoordinateY()
+    {
+        return $this->coordinateY;
     }
 
     /**
