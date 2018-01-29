@@ -35,9 +35,9 @@ class PersonageStats
     private $vision;
 
     /**
-     * @var text
+     * @var string
      *
-     * @ORM\Column(name="visitedMap", type="text")
+     * @ORM\Column(name="visitedMap", type="text", nullable=true)
      */
     private $visitedMap;
 
@@ -135,18 +135,18 @@ class PersonageStats
     }
 
     /**
-     * @return text
+     * @return string
      */
-    public function getVisitedMap(): text
+    public function getVisitedMap(): string
     {
         return $this->visitedMap;
     }
 
     /**
-     * @param int $visitedMap
+     * @param string $visitedMap
      * @return PersonageStats
      */
-    public function setVisitedMap(int $visitedMap): PersonageStats
+    public function setVisitedMap(string $visitedMap): PersonageStats
     {
         $this->visitedMap = $visitedMap;
         return $this;

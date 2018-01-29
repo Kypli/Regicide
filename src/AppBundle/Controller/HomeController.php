@@ -6,6 +6,7 @@ use AppBundle\Entity\Player;
 use AppBundle\Entity\Map;
 use AppBundle\Service\Order\Move;
 use AppBundle\Service\Map\MapLimit;
+use AppBundle\Service\Map\MapVisibility;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +29,7 @@ class HomeController extends Controller
         // Move
         if (!empty($request->query->get('go'))) {
             $move->moving($player, $request->query->get('go'));
+            $this->getDoctrine()->getManager()->flush();
         }
 
         // MapLimit
@@ -38,7 +40,7 @@ class HomeController extends Controller
 
         // MapVisibility
         $map = $mapVisibility->visibility($player, $map);
-        
+
         // Render
         return $this->render('default/index.html.twig', [
             'player' => $player,
