@@ -174,4 +174,5 @@ class Clan
     {
         return $this->clanRanks;
     }
+
 }
