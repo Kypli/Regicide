@@ -4,8 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Player;
 use AppBundle\Entity\Map;
-use AppBundle\Service\Move;
-use AppBundle\Service\MapLimit;
+use AppBundle\Service\Order\Move;
+use AppBundle\Service\Map\MapLimit;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +16,7 @@ class HomeController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request, Move $move, MapLimit $mapLimit)
+    public function indexAction(Request $request, Move $move, MapLimit $mapLimit,  MapVisibility $mapVisibility)
     {
         // Doctrine
         $em = $this->getDoctrine()->getManager();
@@ -36,6 +36,10 @@ class HomeController extends Controller
         // Map
         $map = $em->getRepository('AppBundle:Map')->findType($mapLimit);
 
+        // MapVisibility
+        $map = $mapVisibility->visibility($player, $map);
+        
+        // Render
         return $this->render('default/index.html.twig', [
             'player' => $player,
             'mapLimit' => $mapLimit,

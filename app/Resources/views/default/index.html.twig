@@ -69,19 +69,21 @@
                     {% if player.personage.map.coordinateX == ii+1 and player.personage.map.coordinateY == i+1 %}
                         <td>|</td>
                     {% else %}
-                        <td>
+                        <td onclick='deplacement_carte({{ ii+1 }}, {{ i+1 }})'>
                             {# Form #}
-                            <form method="get" action="" id="{{ ii+1 }}_{{ i+1 }}">
+                            <form method="get" action="" id="form{{ ii+1 }}_{{ i+1 }}">
 
                                 {# Image Map #}
                                 {% for mappy in map %}
                                     {% if mappy.coordinateX == ii+1 and mappy.coordinateY == i+1 %}
                                         <img class="tuile" name="" alt="" title=""
-                                             src="{{ asset('assets/image/map/surface/' ~ mappy.mapType.type ~ mappy.mapType.level ~ '_' ~ mappy.mapType.visibility ~'.png') }}">
+                                             src="{{ asset('assets/image/map/surface/'
+                                                 ~ mappy.mapType.type ~ mappy.mapType.level ~ '_'
+                                                 ~ mappy.mapType.visibility ~'.png') }}">
                                     {% endif %}
                                 {% endfor %}
-
-                                <input type="submit" class="hidden" name="go" value="{{ ii+1 }}|{{ i+1 }}">
+                                <input type="hidden" name="go" value="{{ ii+1 }}|{{ i+1 }}">
+                                <input type="submit" class="hidden">
                             </form>
                         </td>
                     {% endif %}

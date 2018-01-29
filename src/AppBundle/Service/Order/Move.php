@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service;
+namespace AppBundle\Service\Order;
 
 use AppBundle\Entity\Map;
 use AppBundle\Entity\Player;
