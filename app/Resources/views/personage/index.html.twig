@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Personages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Photo</th>
+                <th>Receveivemail</th>
+                <th>Invention</th>
+                <th>Job</th>
+                <th>Job2</th>
+                <th>Insidebuilding</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personage in personages %}
+            <tr>
+                <td><a href="{{ path('personage_show', { 'id': personage.id }) }}">{{ personage.id }}</a></td>
+                <td>{{ personage.firstName }}</td>
+                <td>{{ personage.lastName }}</td>
+                <td>{{ personage.age }}</td>
+                <td>{{ personage.gender }}</td>
+                <td>{% if personage.photo %}Yes{% else %}No{% endif %}</td>
+                <td>{{ personage.receveiveMail }}</td>
+                <td>{{ personage.invention }}</td>
+                <td>{{ personage.job }}</td>
+                <td>{{ personage.job2 }}</td>
+                <td>{% if personage.insideBuilding %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('personage_show', { 'id': personage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('personage_edit', { 'id': personage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('personage_new') }}">Create a new personage</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -32,9 +32,9 @@ class Building
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Map", inversedBy="locationMap")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Map", inversedBy="building")
      */
-    private $location;
+    private $map;
 
     /**
      *
@@ -473,5 +473,29 @@ class Building
     public function getBuilding()
     {
         return $this->building;
+    }
+
+    /**
+     * Set map
+     *
+     * @param \AppBundle\Entity\Map $map
+     *
+     * @return Building
+     */
+    public function setMap(\AppBundle\Entity\Map $map = null)
+    {
+        $this->map = $map;
+
+        return $this;
+    }
+
+    /**
+     * Get map
+     *
+     * @return \AppBundle\Entity\Map
+     */
+    public function getMap()
+    {
+        return $this->map;
     }
 }
