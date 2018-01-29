@@ -3,6 +3,7 @@
 namespace AppBundle\Service\Map;
 
 use AppBundle\Entity\Player;
+use AppBundle\Entity\Map;
 
 
 class MapVisibility
