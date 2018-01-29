@@ -86,6 +86,10 @@ class Map
      */
     private $owner;
 
+    /**
+     * @var string
+     */
+    private $visible;
 
     /**
      * Constructor
@@ -201,6 +205,30 @@ class Map
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set visible
+     *
+     * @param string $visible
+     *
+     * @return Map
+     */
+    public function setVisible($visible = null)
+    {
+        $this->visible = $visible;
+
+        return $this;
+    }
+
+    /**
+     * Get visible
+     *
+     * @return string
+     */
+    public function getVisible()
+    {
+        return $this->visible;
     }
 
     /**

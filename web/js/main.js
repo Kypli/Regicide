@@ -4,7 +4,7 @@
 // });
 
 
-function deplacement_carte(x, y)
+function moving(x, y)
 {
     let id = "form" + x + "_" + y;
     document.forms[id].submit();
