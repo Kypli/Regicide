@@ -12,9 +12,9 @@ class OrderController extends Controller
 {
 
     /**
-     * @Route("/order", name="order_index")
+     * @Route("/order/move", name="order_move")
      */
-    public function indexAction(Request $request, Move $move)
+    public function MoveAction(Request $request, Move $move)
     {
         // Doctrine
         $em = $this->getDoctrine()->getManager();

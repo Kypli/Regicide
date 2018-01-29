@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Player;
 use AppBundle\Entity\Map;
-use AppBundle\Service\Order\Move;
+use AppBundle\Form\MapType;
 use AppBundle\Service\Map\MapLimit;
 use AppBundle\Service\Map\MapVisibility;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,9 +27,15 @@ class HomeController extends Controller
         $player = $em->getRepository('AppBundle:Player')
             ->findOneBy(['firstName' => 'FNom_player1']);
 
+        // Initialize Form SimpleSearch
+        $mapy = new Map();
+        $form = $this->createForm(MapType::class, $mapy);
+        $form->handleRequest($request);
+
         // Render
         return $this->render('default/index.html.twig', [
             'player' => $player,
+            'form' => $form->createView(),
         ]);
     }
 

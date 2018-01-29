@@ -67,8 +67,10 @@
                             personageBordure
                         {% endif %}
                     ">
+
                         {# Form #}
-                        <form method="get" action="order" id="form{{ ii+1 }}_{{ i+1 }}">
+                        <form method="get" action="order/move" id="form{{ ii+1 }}_{{ i+1 }}">
+                        {#{{ form_start(form, {'attr' : {'id' : 'form' ~ {{ ii+1 }} ~ '_' ~ {{ i+1 }} } }) }}#}
 
                             {# Image Map #}
                             {% for mappy in map %}
@@ -87,6 +89,8 @@
                             {% endfor %}
                             <input type="hidden" name="go" value="{{ ii+1 }}|{{ i+1 }}">
                             <input type="submit" class="hidden">
+
+                        {#{{ form_end(form) }}#}
                         </form>
 
                         {# Image Personage #}
