@@ -1,0 +1,139 @@
+<p>
+    Taille carte X: 12<br/>
+    Taille carte Y: 12<br/>
+    <br/>
+    Affichage Max X: {{ player.areaXmax }}<br/>
+    Affichage Max Y: {{ player.areaYmax }}<br/>
+    <br/>
+    Coordonne X : {{ player.personage.map.coordinateX }}<br/>
+    Coordonne Y : {{ player.personage.map.coordinateY }}<br/>
+    <br/>
+    Map Limite X {{ mapLimit[0] }} - {{ mapLimit[1] }}<br/>
+    Map Limite Y {{ mapLimit[2] }} - {{ mapLimit[3] }}<br/>
+    <br/>
+</p>
+
+<div class="block_carte">
+
+    <table class="table">
+
+        {# DECOMPTE CARTE X #}
+        <tr>
+            <td></td>
+            {% if mapLimit[0] == 0 %}
+                <td></td>
+            {% endif %}
+            {%  for i in mapLimit[0]..mapLimit[1]-1 %}
+                <td>{{ i+1 }}</td>
+            {% endfor %}
+        </tr>
+
+        {# WALL TOP #}
+        {% if mapLimit[2] == 0 %}
+            <tr>
+                <td></td>
+
+                {# WALL TOP-LEFT #}
+                {% if mapLimit[0] == 0 %}
+                    <td><img src={{ asset('assets/image/map/surface/inconnue_xy.png') }} alt='mur' class='floatleft'/></td>
+                {% endif %}
+
+                {# WALL #}
+                {%  for i in mapLimit[2]..mapLimit[3]-1 %}
+                    <td><img src={{ asset('assets/image/map/surface/inconnue_x.png') }} alt='mur' class='floatleft'/></td>
+                {% endfor %}
+
+                {# WALL TOP-RIGHT #}
+                {% if mapLimit[1] == mapSize %}
+                    <td><img src={{ asset('assets/image/map/surface/inconnue_xy.png') }} alt='mur' class='floatleft'/></td>
+                {% endif %}
+            </tr>
+        {% endif %}
+
+        {# DECOMPTE CARTE Y #}
+        {%  for i in mapLimit[2]..mapLimit[3]-1 %}
+            <tr>
+                <td>{{ i+1 }}</td>
+
+                {# WALL LEFT #}
+                {% if mapLimit[0] == 0 %}
+                    <td><img src={{ asset('assets/image/map/surface/inconnue_y.png') }} alt='mur' class='floatleft'/></td>
+                {% endif %}
+
+                {# AFFICHAGE TUILE + PERSO #}
+                {%  for ii in mapLimit[0]..mapLimit[1]-1 %}
+                    <td onclick='moving({{ ii+1 }}, {{ i+1 }})' class="tdTuile
+                        {% if player.personage.map.coordinateX == ii+1 and player.personage.map.coordinateY == i+1 %}
+                            personageBordure
+                        {% endif %}
+                    ">
+                        {# Form #}
+                        <form method="get" action="order" id="form{{ ii+1 }}_{{ i+1 }}">
+
+                            {# Image Map #}
+                            {% for mappy in map %}
+                                {% if mappy.coordinateX == ii+1 and mappy.coordinateY == i+1 %}
+
+                                    {% if mappy.visible == 1 %}
+                                        <img class="tuile"
+                                             src="{{ asset('assets/image/map/surface/'
+                                                 ~ mappy.mapType.type ~ mappy.mapType.level ~ '_'
+                                                 ~ mappy.mapType.visibility ~'.png') }}">
+                                    {% else %}
+                                        <img class="tuile"
+                                             src="{{ asset('assets/image/map/inconnue.png') }}">
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            <input type="hidden" name="go" value="{{ ii+1 }}|{{ i+1 }}">
+                            <input type="submit" class="hidden">
+                        </form>
+
+                        {# Image Personage #}
+                        {% if player.personage.map.coordinateX == ii+1 and player.personage.map.coordinateY == i+1 %}
+                            <img class="personage" src="{{ asset('assets/image/map/zpersonnage_1.png/') }}">
+                        {% endif %}
+                    </td>
+                {% endfor %}
+
+                {# WALL RIGHT #}
+                {% if mapLimit[1] == mapSize %}
+                    <td>
+                        <img src={{ asset('assets/image/map/surface/inconnue_y.png') }} alt='mur' class='floatleft'/>
+                    </td>
+                {% endif %}
+
+            </tr>
+        {% endfor %}
+
+        {# WALL BOTTOM #}
+        {% if mapLimit[3] == mapSize %}
+            <tr>
+                <td></td>
+
+                {# WALL BOTTOM-LEFT #}
+                {% if mapLimit[0] == 0 %}
+                    <td>
+                        <img src={{ asset('assets/image/map/surface/inconnue_xy.png') }} alt='mur' class='floatleft'/>
+                    </td>
+                {% endif %}
+
+                {# WALL #}
+                {%  for i in mapLimit[0]..mapLimit[1]-1 %}
+                    <td>
+                        <img src={{ asset('assets/image/map/surface/inconnue_x.png') }} alt='mur' class='floatleft'/>
+                    </td>
+                {% endfor %}
+
+                {# WALL BOTTOM-RIGHT #}
+                {% if mapLimit[1] == mapSize %}
+                    <td>
+                        <img src={{ asset('assets/image/map/surface/inconnue_xy.png') }} alt='mur' class='floatleft'/>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endif %}
+
+    </table>
+
+</div>

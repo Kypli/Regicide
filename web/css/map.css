@@ -1,0 +1,49 @@
+.block_carte
+{
+    height: 100%;
+    width: auto;
+    min-width: 250px;
+    min-height: 200px;
+    margin: auto;
+    padding: 5px;
+    padding-top: 15px;
+    padding-right: 15px;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow: auto;
+    border:1px solid green;
+
+}
+
+.table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tdTuile {
+    width: 70px;
+    height: 70px;
+    position: relative;
+}
+
+.tuile
+{
+    width: 70px;
+    height: 70px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.personage
+{
+    position: absolute;
+    z-index: 2;
+    top: 15px;
+    left: 25px;
+}
+
+.personageBordure {
+    border:1px solid red;
+    background-color: red;
+}

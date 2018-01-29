@@ -14,10 +14,11 @@ use Symfony\Component\HttpFoundation\Request;
 class HomeController extends Controller
 {
     const LIMITMAP = 12;
+
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request, Move $move, MapLimit $mapLimit,  MapVisibility $mapVisibility)
+    public function indexAction(Request $request)
     {
         // Doctrine
         $em = $this->getDoctrine()->getManager();
@@ -26,11 +27,23 @@ class HomeController extends Controller
         $player = $em->getRepository('AppBundle:Player')
             ->findOneBy(['firstName' => 'FNom_player1']);
 
-        // Move
-        if (!empty($request->query->get('go'))) {
-            $move->moving($player, $request->query->get('go'));
-            $this->getDoctrine()->getManager()->flush();
-        }
+        // Render
+        return $this->render('default/index.html.twig', [
+            'player' => $player,
+        ]);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function mapAction(MapLimit $mapLimit,  MapVisibility $mapVisibility)
+    {
+        // Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Player
+        $player = $em->getRepository('AppBundle:Player')
+            ->findOneBy(['firstName' => 'FNom_player1']);
 
         // MapLimit
         $mapLimit = $mapLimit->limit($player, self::LIMITMAP);
@@ -42,7 +55,7 @@ class HomeController extends Controller
         $map = $mapVisibility->visibility($player, $map);
 
         // Render
-        return $this->render('default/index.html.twig', [
+        return $this->render('default/map.html.twig', [
             'player' => $player,
             'mapLimit' => $mapLimit,
             'mapSize' => self::LIMITMAP,
