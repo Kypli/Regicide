@@ -23,8 +23,8 @@ class PlayerFixtures extends Fixture
             $player->setPassword('123');
             $player->setArrangement('nom');
             $player->setArrangementOrder('ASC');
-            $player->setAreaXmax(5);
-            $player->setAreaYmax(5);
+            $player->setAreaXmax(7);
+            $player->setAreaYmax(7);
             $this->addReference('player'.$i, $player);
 
             $manager->persist($player);

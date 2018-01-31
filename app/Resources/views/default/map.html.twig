@@ -1,0 +1,116 @@
+<div class="block_carte">
+
+    <table class="table">
+
+        {# DECOMPTE CARTE X #}
+        <tr>
+            <td></td>
+            {% if mapLimit[0] == 0 %}
+                <td></td>
+            {% endif %}
+            {%  for i in mapLimit[0]..mapLimit[1]-1 %}
+                <td>{{ i+1 }}</td>
+            {% endfor %}
+        </tr>
+
+        {# WALL TOP #}
+        {% if mapLimit[2] == 0 %}
+            <tr>
+                <td></td>
+
+                {# WALL TOP-LEFT #}
+                {% if mapLimit[0] == 0 %}
+                    <td class="bgBlack"></td>
+                {% endif %}
+
+                {# WALL #}
+                {%  for i in mapLimit[2]..mapLimit[3]-1 %}
+                    <td class="bgBlack"></td>
+                {% endfor %}
+
+                {# WALL TOP-RIGHT #}
+                {% if mapLimit[1] == mapSize %}
+                    <td class="bgBlack"></td>
+                {% endif %}
+            </tr>
+        {% endif %}
+
+        {# DECOMPTE CARTE Y #}
+        {%  for i in mapLimit[2]..mapLimit[3]-1 %}
+            <tr>
+                <td>{{ i+1 }}</td>
+
+                {# WALL LEFT #}
+                {% if mapLimit[0] == 0 %}
+                    <td class="bgBlack"></td>
+                {% endif %}
+
+                {# AFFICHAGE TUILE + PERSO #}
+                {%  for ii in mapLimit[0]..mapLimit[1]-1 %}
+                    <td class="tdTuile" onclick='moving({{ ii+1 }}, {{ i+1 }})'>
+
+                        {# Form #}
+                        {{ form_start(form, {'attr' : {'id' : 'form' ~ (ii+1) ~ '_' ~ (i+1) } }) }}
+
+                            {# Image Map #}
+                            {% for mappy in map %}
+
+                                {# Running Tuile #}
+                                {% if mappy.coordinateX == ii+1 and mappy.coordinateY == i+1 %}
+
+                                    {# Visible ? #}
+                                    {% if mappy.visible == 2 %}
+                                        <img class="tuile" src="{{ asset('assets/image/map/inconnue.png') }}">
+                                    {% else %}
+                                        <img class="tuile"
+                                             src="{{ asset('assets/image/map/surface/'
+                                                 ~ mappy.mapType.type ~ mappy.mapType.level ~ '_'
+                                                 ~ mappy.visible ~'.png') }}">
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+
+                            <input type="hidden" name="go" value="{{ ii+1 }}|{{ i+1 }}">
+                            <input type="submit" class="hidden">
+                        {{ form_end(form) }}
+
+                        {# Image Personage #}
+                        {% if player.personage.map.coordinateX == ii+1 and player.personage.map.coordinateY == i+1 %}
+                            <img class="personage personageBordure" src="{{ asset('assets/image/map/zpersonnage_1.png/') }}">
+                        {% endif %}
+                    </td>
+                {% endfor %}
+
+                {# WALL RIGHT #}
+                {% if mapLimit[1] == mapSize %}
+                    <td class="bgBlack"></td>
+                {% endif %}
+
+            </tr>
+        {% endfor %}
+
+        {# WALL BOTTOM #}
+        {% if mapLimit[3] == mapSize %}
+            <tr>
+                <td></td>
+
+                {# WALL BOTTOM-LEFT #}
+                {% if mapLimit[0] == 0 %}
+                    <td class="bgBlack"></td>
+                {% endif %}
+
+                {# WALL #}
+                {%  for i in mapLimit[0]..mapLimit[1]-1 %}
+                    <td class="bgBlack"></td>
+                {% endfor %}
+
+                {# WALL BOTTOM-RIGHT #}
+                {% if mapLimit[1] == mapSize %}
+                    <td class="bgBlack"></td>
+                {% endif %}
+            </tr>
+        {% endif %}
+
+    </table>
+
+</div>

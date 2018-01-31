@@ -1,11 +1,161 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <table class="table">
+{% block content %}
 
+    <div class="row">
+        <div class="infosrapides col-md-4">Infos rapides
+            <div class="info_rapide_image">
+                <table class="info_rapide_img_icone" class="info_rapide_img_icone_class">
+                    <tbody>
+                    <tr class="info_rapide_img_icone_image">
+                        <td>
+                            <img alt="info_rapide_pv" src="{{ asset('assets/image/interface/pv_rapport.png') }}" title="Points de vie">
+                        </td>
+                        <td>
+                            <img alt="info_rapide_vigueur" src="{{ asset('assets/image/interface/vig_rapport.png') }}" title="Vigueur">
+                        </td>
+                        <td>
+                            <img alt="info_rapide_satiete" src="{{ asset('assets/image/interface/sat_rapport.png') }}" title="Satiété">
+                        </td>
+                        <td>
+                            <a href="#" title="Courrier"><img alt="info_rapide_courriel" src="{{ asset('assets/image/interface/courriel.png') }}"></a>
+                        </td>
+                    </tr>
+                    <tr class="info_rapide_img_icone_chiffre">
+                        <td>
+                            {{ player.personage.personagestats.hp }}
+                        </td>
+                        <td>
+                            {{ player.personage.personagestats.stamina }}
+                        </td>
+                        <td>
+                            {{ player.personage.personagestats.satiety }}
+                        </td>
+                        <td>
+                            <a href="#">{{ player.personage.receveivemail }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="info_rapide_img_icone_temps_1">
+                            <img alt="info_rapide_temps" src="{{ asset('assets/image/interface/tps_rapport.png') }}" title="Temps restant">
+                        </td>
+                        <td id="chrono" class="info_rapide_img_icone_temps_2" colspan="3"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="carte col-md-4">
 
+            {# MAP #}
+            <a href="{{ path('fullMap_index') }}">Province</a>
+            {{ render(controller("AppBundle:Home:map")) }}
 
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="infos col-md-6">Liste d'ordres
+            <div class="perso">
+                <p>Personnage</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="infos">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="bien-être">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="production">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="inventaire">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <p>Terrain</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="infos">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="production">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="surface">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="construction">
+                <p>Construction</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="terrain">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="batiment">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="inventory">
+                <p>Inventaire</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="nourriture">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="bois">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="minéraux">
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="végétaux">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="objects">
+                <p>Objets</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img class="img-thumbnail img-responsive" src="..." alt="infos">
+                        </a>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+        <div class="carte col-md-6">
+            Ordre en cours
+        </div>
+    </div>
 
-    </table>
 {% endblock %}
