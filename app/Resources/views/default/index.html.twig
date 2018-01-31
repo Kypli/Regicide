@@ -3,6 +3,8 @@
 {% block content %}
 
     <div class="row">
+
+        {# FAST INFOS #}
         <div class="infosrapides col-md-4">Infos rapides
             <div class="info_rapide_image">
                 <table class="info_rapide_img_icone" class="info_rapide_img_icone_class">
@@ -45,13 +47,13 @@
                 </table>
             </div>
         </div>
-        <div class="carte col-md-4">
 
-            {# MAP #}
+        {# MAP #}
+        <div class="carte col-md-4">
             <a href="{{ path('fullMap_index') }}">Province</a>
             {{ render(controller("AppBundle:Home:map")) }}
-
         </div>
+
     </div>
     <hr>
     <div class="row">

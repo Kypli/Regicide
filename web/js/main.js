@@ -13,39 +13,31 @@ function moving(x, y)
 
 function addTime(hour, minute, second)
 {
+    // Initialize
+    addSecond = second;
+    addMinute = minute;
+    addHour = hour;
 
-    if (!document.getElementById("chrono")) {
-        clearInterval(timer);
-    } else {
+    // Change Text
+    var text = addHour + "h, " + addMinute + "mn et " + addSecond + "s";
+    document.getElementById("chrono").innerHTML = text;
 
-        // Initialize
-        addSecond = second;
-        addMinute = minute;
-        addHour = hour;
+    // Max 48h
+    if (addHour < 48){
 
-        // Change Text
-        var text = addHour + "h, " + addMinute + "mn et " + addSecond + "s";
-        document.getElementById("chrono").innerHTML = text;
+        addSecond++;
 
-        // Max 48h
-        if (addHour < 48) {
-
-            addSecond++;
-
-            if (addSecond > 59)
-            {
-                addSecond = 0;
-                addMinute++;
-            }
-
-            if (addMinute > 59)
-            {
-                addMinute = 0;
-                addHour++;
-            }
+        if (addSecond > 59){
+            addSecond = 0;
+            addMinute++;
         }
 
+        if (addMinute > 59){
+            addMinute = 0;
+            addHour++;
+        }
     }
+
 
 }
 

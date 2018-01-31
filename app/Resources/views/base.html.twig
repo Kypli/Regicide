@@ -18,7 +18,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('assets/image/interface/favicon.ico') }}"/>
     </head>
 
-    <body onload='addTime({{ timeFormat.0 }}, {{ timeFormat.1 }}, {{ timeFormat.2 }})'>
+    <body
+        {% if timeFormat is defined %}
+            onload='addTime({{ timeFormat.0 }}, {{ timeFormat.1 }}, {{ timeFormat.2 }})'
+        {% endif %}
+    >
 
         {#HEADER#}
         {% block header %}{% endblock %}
