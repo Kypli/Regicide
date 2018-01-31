@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    {{ render(controller("AppBundle:Home:map", {'fullMap': true } )) }}
+
+{% endblock %}

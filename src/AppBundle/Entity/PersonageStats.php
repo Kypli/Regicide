@@ -1,9 +1,6 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PersonageStats
  *
@@ -17,7 +14,6 @@ class PersonageStats
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Personage", mappedBy="personageStats")
      */
     private $personage;
-
     /**
      * @var int
      *
@@ -26,78 +22,66 @@ class PersonageStats
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var int
      *
      * @ORM\Column(name="vision", type="integer")
      */
     private $vision;
-
     /**
      * @var string
      *
      * @ORM\Column(name="visitedMap", type="text", nullable=true)
      */
     private $visitedMap;
-
     /**
      * @var int
      *
      * @ORM\Column(name="hp", type="integer")
      */
     private $hp;
-
     /**
      * @var int
      *
      * @ORM\Column(name="bonusHp", type="integer")
      */
     private $bonusHp;
-
     /**
      * @var int
      *
      * @ORM\Column(name="stamina", type="integer")
      */
     private $stamina;
-
     /**
      * @var int
      *
      * @ORM\Column(name="satiety", type="integer")
      */
     private $satiety;
-
     /**
      * @var int
      *
      * @ORM\Column(name="timeReserve", type="integer")
      */
     private $timeReserve;
-
     /**
      * @var int
      *
      * @ORM\Column(name="weightInventory", type="integer")
      */
     private $weightInventory;
-
     /**
      * @var int
      *
      * @ORM\Column(name="heightInventory", type="integer")
      */
     private $heightInventory;
-
     /**
      * @var date
      *
      * @ORM\Column(name="dateLastAction", type="datetime")
      */
     private $dateLastAction;
-
-
     /**
      * @return int
      */
@@ -105,7 +89,6 @@ class PersonageStats
     {
         return $this->id;
     }
-
     /**
      * @param int $id
      * @return PersonageStats
@@ -115,7 +98,6 @@ class PersonageStats
         $this->id = $id;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -123,7 +105,6 @@ class PersonageStats
     {
         return $this->vision;
     }
-
     /**
      * @param int $vision
      * @return PersonageStats
@@ -133,15 +114,13 @@ class PersonageStats
         $this->vision = $vision;
         return $this;
     }
-
     /**
      * @return string
      */
-    public function getVisitedMap(): string
+    public function getVisitedMap()
     {
         return $this->visitedMap;
     }
-
     /**
      * @param string $visitedMap
      * @return PersonageStats
@@ -151,7 +130,6 @@ class PersonageStats
         $this->visitedMap = $visitedMap;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -159,7 +137,6 @@ class PersonageStats
     {
         return $this->hp;
     }
-
     /**
      * @param int $hp
      * @return PersonageStats
@@ -169,7 +146,6 @@ class PersonageStats
         $this->hp = $hp;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -177,7 +153,6 @@ class PersonageStats
     {
         return $this->bonusHp;
     }
-
     /**
      * @param int $bonusHp
      * @return PersonageStats
@@ -187,7 +162,6 @@ class PersonageStats
         $this->bonusHp = $bonusHp;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -195,7 +169,6 @@ class PersonageStats
     {
         return $this->stamina;
     }
-
     /**
      * @param int $stamina
      * @return PersonageStats
@@ -205,7 +178,6 @@ class PersonageStats
         $this->stamina = $stamina;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -213,7 +185,6 @@ class PersonageStats
     {
         return $this->satiety;
     }
-
     /**
      * @param int $satiety
      * @return PersonageStats
@@ -223,7 +194,6 @@ class PersonageStats
         $this->satiety = $satiety;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -231,7 +201,6 @@ class PersonageStats
     {
         return $this->timeReserve;
     }
-
     /**
      * @param int $timeReserve
      * @return PersonageStats
@@ -241,7 +210,6 @@ class PersonageStats
         $this->timeReserve = $timeReserve;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -249,7 +217,6 @@ class PersonageStats
     {
         return $this->weightInventory;
     }
-
     /**
      * @param int $weightInventory
      * @return PersonageStats
@@ -259,7 +226,6 @@ class PersonageStats
         $this->weightInventory = $weightInventory;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -267,7 +233,6 @@ class PersonageStats
     {
         return $this->heightInventory;
     }
-
     /**
      * @param int $heightInventory
      * @return PersonageStats
@@ -277,7 +242,6 @@ class PersonageStats
         $this->heightInventory = $heightInventory;
         return $this;
     }
-
     /**
      * Set dateLastAction
      *
@@ -288,10 +252,8 @@ class PersonageStats
     public function setDateLastAction($dateLastAction)
     {
         $this->dateLastAction = $dateLastAction;
-
         return $this;
     }
-
     /**
      * Get dateLastAction
      *
@@ -308,7 +270,6 @@ class PersonageStats
     {
         $this->personage = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
     /**
      * Add personage
      *
@@ -319,10 +280,8 @@ class PersonageStats
     public function addPersonage(\AppBundle\Entity\Personage $personage)
     {
         $this->personage[] = $personage;
-
         return $this;
     }
-
     /**
      * Remove personage
      *
@@ -332,7 +291,6 @@ class PersonageStats
     {
         $this->personage->removeElement($personage);
     }
-
     /**
      * Get personage
      *

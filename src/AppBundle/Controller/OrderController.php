@@ -8,11 +8,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class OrderController
+ *
+ * @Route("order")
+ * @package AppBundle\Controller
+ */
 class OrderController extends Controller
 {
 
     /**
-     * @Route("/order/move", name="order_move")
+     * @Route("/move", name="order_move")
      */
     public function MoveAction(Request $request, Move $move)
     {

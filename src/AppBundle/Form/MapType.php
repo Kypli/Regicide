@@ -17,11 +17,7 @@ class MapType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('owner', EntityType::class, array(
-                    'class' => Map::class,
-                    'choice_label' => 'id',
-            ))
-            ->setAction('order_move')
+            ->setAction('order/move')
             ->setMethod('GET');
     }
 
