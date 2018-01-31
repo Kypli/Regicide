@@ -1,4 +1,4 @@
-// Valid Map
+// Valid Map (not working yet)
 // $(".tuile").on("click", function(e) {
 //     $(this).parents('form:first').validate();
 // });
@@ -10,7 +10,7 @@ function moving(x, y)
     document.forms[id].submit();
 }
 
-
+// Add Reserve Time
 function addTime(hour, minute, second)
 {
     // Initialize
@@ -37,8 +37,6 @@ function addTime(hour, minute, second)
             addHour++;
         }
     }
-
-
 }
 
 var timer = setInterval('addTime(addHour, addMinute, addSecond)',1000);
