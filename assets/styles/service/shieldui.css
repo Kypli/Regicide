@@ -1,0 +1,150 @@
+/*/////////*/
+/* MODAL */
+/*/////////*/
+
+/* BANDEAU */
+.sui-window-titlebar {
+	background-color: rgb(130, 80, 194);
+}
+.sui-window-button-icon-close:hover, .sui-window-button-icon:hover, .sui-button:hover, .sui-window-button:hover {
+	background-color: rgb(154, 111, 209);
+}
+
+
+/*/////////*/
+/*  GRID  */
+/*/////////*/
+
+/* ROW */
+.sui-grid:hover,
+.sui-selected:hover,
+.sui-cell:hover,
+.sui-row:hover,
+.sui-alt-row:hover {
+	background-color: rgb(130, 80, 194)!important;
+}
+.sui-grid .sui-selected .sui-cell, .sui-grid tr .sui-selected {
+	background-color: rgb(175, 136, 225)!important;
+}
+
+/* BORDER */
+.sui-grid .sui-gridheader {
+	border-bottom: 2px solid rgb(175, 136, 225);
+}
+
+/* FILTRES */
+.sui-filter-cell button {
+	display: none;
+}
+
+.fa-search {
+	margin-left: 10px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+#filtreActif, #filtreActifType, #closeFiltres, #filtreFicheActif, #filtreFicheActifType, #closeFicheFiltres {
+	color: #FF4500;
+}
+
+#closeFiltres, #closeFicheFiltres {
+	color: red;
+	margin-top: 15px!important;
+	cursor: pointer;
+}
+.sui-filter-row input, .sui-filter-row .sui-input {
+	background-color: rgb(237, 249, 192);
+}
+
+/* INPUT */
+.inputSuiVide {
+	background-color: rgb(237, 138, 172);
+}
+.inputSuiNonVide {
+	background-color: rgb(138, 237, 153);
+}
+
+.background_white {
+	background-color: rgb(138, 237, 153)!important;
+}
+
+/* PAGINATION */
+.sui-pager-number {
+	background-color: rgb(175, 136, 225)!important;
+}
+
+/* TEXT SELECTION */
+.sui-grid-core .sui-table,
+.sui-grid-core .sui-selectable
+{
+	user-select: auto;
+	-webkit-user-select: auto;
+	-khtml-user-select: auto;
+	-moz-user-select: auto;
+	-o-user-select: auto;
+	-ms-user-select: auto;
+	-webkit-touch-callout: auto;
+}
+
+
+/*/////////*/
+/*  AUTRE  */
+/*/////////*/
+
+/* ICONE */
+.icon {
+	margin-left: 15px;
+	cursor: pointer;
+}
+.iconHelp {
+	margin-left: 15px;
+	cursor: help;
+}
+
+#checkTrue {
+	color: green!important;
+}
+#checkFalse {
+	color: red;
+}
+
+/* CHECKTYPE */
+.checkType, .radioType{
+	width: 25px;
+	height: 25px;
+	/*-webkit-appearance: none;*/
+	background-color: lightGrey;
+	cursor: pointer;
+ 	border: 1px solid #659c41;
+}
+
+.checkType:checked {
+	background-color: white;
+}
+
+.checkUp {
+	font-size: 25px!important;
+	padding-bottom: 15px!important;
+}
+
+/* CHARGEMENT */
+.chargement-fond {
+	width: 350px;
+	height: 200px;
+	margin-top: 180px;
+	color: black;
+	background-color: lightgray;
+	border-radius: 8px;
+	text-align: center;
+}
+.chargement-img
+{
+	width: 120px;
+	height: 50px;
+	margin: 10px 10px 10px 10px;
+}
+.chargement-text
+{
+	width: auto;
+	padding: 30px 5px 10px 5px;
+}
