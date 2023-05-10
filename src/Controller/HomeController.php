@@ -36,12 +36,4 @@ class HomeController extends AbstractController
 			'dateJour' => $this->dateSer->dateToFrench('now', 'l j F Y'),
 		]);
 	}
-
-	/**
-	 * @Route("/todo", name="_todo")
-	 */
-	public function todo(Request $request){
-
-		return $this->render('todo/index.html.twig');
-	}
 }

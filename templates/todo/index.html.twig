@@ -15,14 +15,52 @@
 	<div class="container">
 		<div class='row mb-3'>
 			<ul>
+				<li>Inscription</li>
+				<ul>
+					<li>Parrainnage</li>
+				</ul>
+				<hr>
 				<li>Joueur</li>
 				<ul>
 					<li>Poins de famille</li>
 					<li>Poins d'inventions</li>
-					<li>Poins de célébrité</li>
+					<li>Poins de réputation familiale</li>
+					<li>Poins de réputation politique</li>
 					<li>Succès</li>
 				</ul>
+				<hr>
 				<li>Ordres</li>
+				<ul>
+					<li>Intrerface dédié aux actions</li>
+					<ul>
+						<li>Action disponible / Action débloqué indisponible (ressource/technologie... insuffisante)</li>
+						<li>Description</li>
+						<li>Cout</li>
+						<li>Chance de réussite</li>
+						<li>Nombre de réalisation</li>
+					</ul>
+					<li>Une action peut nécessiter</li>
+					<ul>
+						<li>Temps</li>
+						<li>Endurance</li>
+						<li>Réussite selon</li>
+						<ul>
+							<li>Difficulté</li>
+							<li>Bonus/Malus du personnage</li>
+							<li>Bonus/Malus d'objets</li>
+							<li>Bonus/Malus quantité d'objets/li>
+						</ul>
+						<li>Santé</li>
+						<li>Charge</li>
+						<li>Objet</li>
+						<li>Technologie</li>
+						<li>Connaissance</li>
+						<li>Type de surface</li>
+						<li>Météo</li>
+					</ul>
+				</ul>
+				<hr>
+				<li>Liste des ordres</li>
 				<ul>
 					<li>Joueur</li>
 					<ul>
@@ -32,23 +70,26 @@
 					<li>Personnage</li>
 					<ul>
 						<li>Déplacement (selon terrain + charge + équipement + monture)</li>
+						<li>Détruire objet/ressource</li>
+						<li>Coma (attendre 6h pour récupérer 10% vigueur/satiété si inf 1%)</li>
 					</ul>
 					<li>PNJ</li>
 					<ul>
-						<li>Serviteurs</li>
-						<li>Citoyen</li>
-						<li>Étranger</li>
-						<li>Créatures</li>
-						<li>Robots</li>
-						<li>Elémentaires</li>
-						<li>Automatisation</li>
+						<li>Demander un rapport aux citoyens sur la situation de leur environnement</li>
+						<ul>
+							<li>Sujet : Métiers, famille, santé...</li>
+							<li>Rapport : Nombre d'oeufs pondu, vols, manque de moyens...</li>
+							<li>Possibilité d'espionnage</li>
+						</ul>
 					</ul>
 					<li>Batiment</li>
 					<ul>
 						<li>Chantier</li>
 						<ul>
 							<li>Construction</li>
-							<li>Démantelèment</li>
+							<li>Démantelèment [Reste: Réupération (refus possible) des ressources]</li>
+							<li>Up nv des batiments</li>
+							<li>Modifier / Rajouter des mobiliers</li>
 						</ul>
 						<li>Production</li>
 					</ul>
@@ -73,34 +114,34 @@
 						<li>Consommer</li>
 					</ul>
 				</ul>
+				<hr>
 				<li>Batiments</li>
 				<ul>
-					<li>Liste</li>
+					<li>Type</li>
 					<ul>
 						<li>Public</li>
 						<ul>
-							<li>Liste</li>
+							<li>Bibliotheque</li>
 							<ul>
-								<li>Bibliotheque</li>
-								<ul>
-									<li>Améliore intelligence -> lecteur</li>
-									<li>Recherche technologie</li>
-									<li>Améliore métiers / carte / up moral</li>
-								</ul>
+								<li>Améliore intelligence -> lecteur</li>
+								<li>Recherche technologie</li>
+								<li>Améliore métiers / carte / up moral</li>
 							</ul>
 						</ul>
-						<li>Niveau</li>
-						<li>Nombre de pièces</li>
-						<li>Solidité</li>
-						<li>Propreté</li>
-						<li>Confort</li>
-						<li>Production</li>
 					</ul>
+					<li>Niveau</li>
+					<li>Nombre de pièces</li>
+					<li>Solidité</li>
+					<li>Propreté</li>
+					<li>Confort</li>
+					<li>Production</li>
+					<li>1ere version -> pas de détails, juste liste avantages/mobiliers</li>
 					<li>Usure</li>
 				</ul>
+				<hr>
 				<li>Terrains</li>
 				<ul>
-					<li>Liste</li>
+					<li>Type</li>
 					<ul>
 						<li>Forêt</li>
 						<li>Plaines</li>
@@ -114,20 +155,24 @@
 						<li>Toundra</li>
 						<li>Ile</li>
 					</ul>
+					<li>Nombres de ressources disponible (eau, bois, métal, pierre...)</li>
 				</ul>
+				<hr>
 				<li>PNJ</li>
 				<ul>
-					<li>Liste</li>
+					<li>Type</li>
 					<ul>
 						<li>Serviteurs</li>
 						<li>Citoyen</li>
-						<li>Étranger</li>
 						<li>Créatures</li>
+						<li>Robots</li>
+						<li>Elémentaires</li>
 					</ul>
 					<li>Role</li>
 					<li>Nom/Prénom</li>
 					<li>Statut marital</li>
 					<li>Travail</li>
+					<li>Domiciliation</li>
 					<li>Fonction</li>
 					<ul>
 						<li>Limite selon prospérité de la ville</li>
@@ -150,60 +195,77 @@
 						<li>Travailleur</li>
 					</ul>
 				</ul>
+				<hr>
 				<li>Personnage</li>
 				<ul>
 					<li>Nom/Prénom</li>
-					<li>Famille</li>
-					<li>Arbre généalogique</li>
-					<li>Profession</li>
-					<li>Fonction</li>
-					<li>Ressources</li>
+					<li>Age</li>
 					<ul>
-						<li>Santé</li>
-						<li>Charge</li>
-						<li>Mana</li>
-						<li>Moral</li>
-						<li>Temps</li>
-						<li>Endurance</li>
-						<li>Vision</li>
+						<li>Vieilesse</li>
+						<li>Plus il est agé, moins il est fort</li>
+						<li>Diminue les points de vie avec l'age</li>
 					</ul>
+					<li>Famille</li>
+					<li>Race</li>
+					<li>Arbre généalogique</li>
+					<li>Métier</li>
+					<li>Fonction</li>
+					<li>Religion</li>
+					<li>Domiciliation</li>
+					<li>Statistique</li>
 					<li>Caractéristique</li>
 					<ul>
 						<li>Primaire</li>
 						<ul>
-							<li>Liste</li>
+							<li>Santé</li>
+							<li>Satiété</li>
+							<li>Temps</li>
+							<li>Endurance</li>
 							<ul>
-								<li>Force</li>
-								<li>Charme</li>
-								<li>Intelligence</li>
-								<li>Habilité</li>
-								<li></li>
+								<li>Si niveau trop bas -> génére Fatigue</li>
+								<li>Fatigue réduit l' efficacité des ordres</li>
+								<li>Dormir baisse fatigue + impact selon qualité (lit, moral, sécurité)</li>
 							</ul>
+							<li>Moral</li>
+							<ul>
+								<li>Impact selon préférences et caractère</li>
+								<li>Bonus moral permanent (femme, enfants, maison...)</li>
+							</ul>
+							<li>Mana</li>
+							<li>Charge</li>
+							<li>Vision</li>
 						</ul>
 						<li>Secondaire</li>
 						<ul>
-							<li>Liste</li>
-							<ul>
-								<li>Observation</li>
-								<li>Productivité</li>
-							</ul>
+							<li>Force</li>
+							<li>Charme</li>
+							<li>Intelligence</li>
+							<li>Habilité</li>
+							<li></li>
 						</ul>
-						<li>Prérequis</li>
-					</ul>
-					<li>Caractère</li>
-					<ul>
-						<li>Liste</li>
+						<li>Tertiaire</li>
+						<ul>
+							<li>Observation</li>
+							<li>Productivité</li>
+						</ul>
+						<li>Préférences</li>
+						<ul>
+							<li>Impact sur le moral</li>
+							<li>Travail</li>
+							<li>Religion</li>
+							<li>Loisirs</li>
+						</ul>
+						<li>Caractère</li>
 						<ul>
 							<li>Mauvais</li>
 							<li>Attentionné</li>
 							<li>Sensible</li>
 							<li>Vengeur</li>
 						</ul>
-						<li>Prérequis</li>
 					</ul>
-					<li>Compétences / talents</li>
+					<li>Acquisition / Influence / État / Impact</li>
 					<ul>
-						<li>Liste</li>
+						<li>Compétences / talents</li>
 						<ul>
 							<li>Sportif</li>
 							<li>Combattant</li>
@@ -211,35 +273,37 @@
 							<li>Observateur</li>
 							<li>Abile</li>
 						</ul>
-						<li>Prérequis</li>
-					</ul>
-					<li>Réputation</li>
-					<ul>
-						<li>Liste</li>
+						<li>Réputation</li>
 						<ul>
 							<li>Mauvais</li>
 							<li>Bon</li>
+							<li>Élevé</li>
 						</ul>
-					</ul>
-					<li>Célébrité</li>
-					<li>Maladie</li>
-					<ul>
-						<li>Liste</li>
+						<li>Maladie / Blessures</li>
 						<ul>
 							<li>xxx</li>
 						</ul>
 					</ul>
 				</ul>
+				<hr>
 				<li>Métiers</li>
 				<ul>
 					<li>Liste</li>
 					<li>Prérequis</li>
 				</ul>
+				<hr>
 				<li>Fonctions</li>
 				<ul>
 					<li>Liste</li>
 					<li>Prérequis</li>
 				</ul>
+				<hr>
+				<li>Grade militaires</li>
+				<ul>
+					<li>Liste</li>
+					<li>grade armée personnalisable mais toujours le même nombre</li>
+				</ul>
+				<hr>
 				<li>Source de pouvoir</li>
 				<ul>
 					<li>Liste</li>
@@ -255,6 +319,7 @@
 							<li>Vie</li>
 							<li>Chaos</li>
 							<li>Bouclier</li>
+							<li>Lumière</li>
 						</ul>
 						<li>Secondaire</li>
 						<ul>
@@ -263,6 +328,7 @@
 						</ul>
 					</ul>
 				</ul>
+				<hr>
 				<li>Magie</li>
 				<ul>
 					<li>Liste</li>
@@ -272,30 +338,82 @@
 						</ul>
 					<li>Prérequis d'un/plusieurs pouvoirs</li>
 				</ul>
-				<li>Inventions</li>
+				<hr>
+				<li>Connaissance</li>
 				<ul>
-					<li>Liste</li>
-						<ul>
-							<li>Catégorie 1 : Récolte</li>
-							<li>Catégorie 2 : Créations</li>
-							<li>Catégorie 3 : Guerre</li>
-							<li>Catégorie 4 : Social</li>
-							<li>Catégorie 5 : Santé</li>
-						</ul>
-					<li>Propre à un individu ou une communauté</li>
-					<li>Permet la construction de machine/outils</li>
+					<li>Technologie + inventions connues</li>
+					<li>Propre à un individu</li>
 				</ul>
+				<hr>
 				<li>Technologie</li>
 				<ul>
+					<li>Chainages des technologies</li>
+					<li>Acquise par une ville si dispo dans la bibliothèque</li>
+					<li>Si acquis dans une ville avec école -> Éduque les enfants</li>
+					<li>Si acquis dans une ville -> Influence la qualité des travailleurs et de la quantité de produits</li>
+					<li>Différentes mécanique du jeu nécessite de connaitre la technologie (métiers, inventions....)</li>
+					<li>Peuvent se transmettre/monnayer/voler (via bibliothèque) à particulier ou de village à village</li>
 					<li>Liste</li>
-					<li>Propre à une communauté</li>
-					<li>Permet de débloquer des inventions</li>
+					<ul>
+						<li>Niveau</li>
+						<ul>
+							<li>1: Connaissance</li>
+							<li>2: Travail</li>
+							<li>3: Expertise</li>
+							<li>4: Spécialiste</li>
+							<li>5: Maître</li>
+							<li>6: Grand Maitre</li>
+						</ul>
+						<li>Domaine</li>
+						<ul>
+							<li>Bois</li>
+							<ul>
+								<li>Ébénisterie</li>
+								<ul>
+									<li>Poutre -> Batiments</li>
+								</ul>
+							</ul>
+							<li>Terre</li>
+							<ul>
+								<li>Fermier</li>
+								<ul>
+									<li>Engrais -> Up de la récolte</li>
+								</ul>
+							</ul>
+							<li>Textiles</li>
+							<li>Métallurgie</li>
+							<li>Chimie</li>
+							<li>Médecine</li>
+							<li>Artisanat</li>
+							<li>Maconnerie</li>
+							<li>...</li>
+						</ul>
+					</ul>
 				</ul>
+				<hr>
+				<li>Invention</li>
+				<ul>
+					<li>Permet la réalisation d'outils/machines</li>
+					<ul>
+						<li>Catégorie 1 : Récolte</li>
+						<li>Catégorie 2 : Créations</li>
+						<li>Catégorie 3 : Guerre</li>
+						<li>Catégorie 4 : Social</li>
+						<li>Catégorie 5 : Santé</li>
+					</ul>
+					<li>Liste</li>
+					<ul>
+						<li>...</li>
+					</ul>
+				</ul>
+				<hr>
 				<li>Objets</li>
 				<ul>
-					<li>Équipement</li>
+					<li>Interface dans un sac</li>
+					<li>Interface porté sur soi</li>
+					<li>Type</li>
 					<ul>
-						<li>Liste</li>
+						<li>Équipement</li>
 						<ul>
 							<li>Armes</li>
 							<ul>
@@ -311,47 +429,56 @@
 							<li>Armure</li>
 							<li>Bouclier</li>
 						</ul>
-					</ul>
-					<li>Consommables</li>
-					<ul>
-						<li>Liste</li>
+						<li>Consommables</li>
 						<ul>
 							<li>xxx</li>
 						</ul>
-					</ul>
-					<li>Utilitaires</li>
-					<ul>
-						<li>Liste</li>
+						<li>Conteneur</li>
+						<ul>
+							<li>Vérifier taille/poids/type (restriction) // Objet transportable ? (gourde ou brouette)</li>
+							<li>Sac</li>
+							<li>Gourde</li>
+						</ul>
+						<li>Utilitaires</li>
+						<ul>
+							<li>Papier/livre</li>
+							<li>xxx</li>
+						</ul>
+						<li>Matériels/outils</li>
 						<ul>
 							<li>xxx</li>
 						</ul>
-					</ul>
-					<li>Matériels/outils</li>
-					<ul>
-						<li>Liste</li>
-					</ul>
-					<li>Ressources</li>
-					<ul>
-						<li>Métaux</li>
+						<li>Ressources</li>
 						<ul>
-							<li>bronze</li>
-							<li>cuivre</li>
-							<li>argent</li>
-							<li>or</li>
-						</ul>
-						<li>Minéraux</li>
-						<ul>
-							<li>Terre</li>
-							<li>Cailloux</li>
-						</ul>
-						<li>Végétaux</li>
-						<ul>
-							<li>xxx</li>
+							<li>Métaux</li>
+							<ul>
+								<li>bronze</li>
+								<li>cuivre</li>
+								<li>argent</li>
+								<li>or</li>
+							</ul>
+							<li>Minéraux</li>
+							<ul>
+								<li>Terre</li>
+								<li>Cailloux</li>
+							</ul>
+							<li>Végétaux</li>
+							<ul>
+								<li>xxx</li>
+							</ul>
+							<li>Liquide</li>
+							<ul>
+								<li>Ne peut être déposser au sol</li>
+								<li>eau</li>
+								<li>huile</li>
+							</ul>
 						</ul>
 					</ul>
 					<li>Prérequis (compétence, inventions, état)</li>
 					<li>Usure</li>
+					<li>Esthétique</li>
 				</ul>
+				<hr>
 				<li>Guildes</li>
 				<ul>
 					<li>Liste</li>
@@ -361,6 +488,7 @@
 					<li>Limiter nombre de place</li>
 					<li>Les pnj refoulé ainsi que lors de la dissolution perdent leur loyauté</li>
 				</ul>
+				<hr>
 				<li>Évènements</li>
 				<ul>
 					<li>Pays</li>
@@ -381,6 +509,7 @@
 						<li>xxx</li>
 					</ul>
 				</ul>
+				<hr>
 				<li>Pays/Région/Ville/Village</li>
 				<ul>
 					<li>Liste</li>
@@ -390,6 +519,7 @@
 					<li>Technologie</li>
 					<li>Système politique</li>
 				</ul>
+				<hr>
 				<li>Rapport/infos</li>
 				<ul>
 					<li>Sous forme de rumeurs</li>
@@ -399,13 +529,27 @@
 					<li>Papier</li>
 					<li>Par lieux</li>
 				</ul>
+				<hr>
 				<li>Carte</li>
 				<ul>
-					<li>Monde</li>
-					<li>Pays</li>
-					<li>Région</li>
-					<li>Ville/Village</li>
+					<li>Lieu</li>
+					<ul>
+						<li>Monde</li>
+						<li>Région</li>
+						<li>Ville/Village</li>
+						<li>Case</li>
+					</ul>
+					<li>Pouvoir</li>
+					<ul>
+						<li>Royaume central</li>
+						<li>Chaque joueur peut créer son territoire</li>
+						<li>1 territoire de 3 région = pays, sinon indépendant</li>
+						<li>Système de loyauté des régions/ville pour la possessions du territoire</li>
+					</ul>
+					<li>Les batiments peuvent prendre plus d'une case</li>
+					<li>Balayage de la carte automatique pour améliorer/enlever les batiments/surface lié à l'usure automatique</li>
 				</ul>
+				<hr>
 				<li>Mini-tchat</li>
 				<ul>
 					<li>Plusieurs onglets</li>
@@ -419,6 +563,7 @@
 					<li>Design des messages (gras, lien, photos etc... Voir java ou regex pour les acolades)</li>
 					<li>Déplacer des sujets</li>
 				</ul>
+				<hr>
 				<li>Forum</li>
 				<ul>
 					<li>A faire ?</li>
@@ -426,7 +571,9 @@
 					<li>Design des messages (gras, lien, photos etc... Voir java ou regex pour les acolades)</li>
 					<li>Déplacer des sujets</li>
 				</ul>
+				<hr>
 				<li>Discord</li>
+				<hr>
 				<li>Accès au site</li>
 				<ul>
 					<li>Autorisation</li>
@@ -446,7 +593,7 @@
 						<li>5 : Site bouclé</li>
 					</ul>
 				</ul>
-
+				<hr>
 				<li>Système de jeu</li>
 				<ul>
 					<li>Météo</li>
@@ -470,11 +617,13 @@
 						<li>xxx</li>
 					</ul>
 				</ul>
+				<hr>
 				<li>Site internet</li>
 				<ul>
 					<li>Interface</li>
 					<ul>
 						<li>Afficher en gris les ordres inaccesibles aux personnages</li>
+						<li>Liste métiers de sa famille/personnages. Grisée si mort/ symbole si autre famille</li>
 					</ul>
 					<li>Inscription</li>
 					<ul>
@@ -483,59 +632,6 @@
 				</ul>
 			</ul>
 
-
-
-		<span class="titre_index">- Objets :</span><br />
-		<div class="contenu_index">
-
-			- Objet conteneur => Vérifier taille/poids/type (restriction) // Objet transportable ? (gourde ou brouette) 
-			- Si non transportable, interface ressource a part et taille/poids hors inventaire + peut s'attacher a un joueur<br />
-			- Si transportable, meme interface ressource (afficher petite info pour signaler qu'un ressource est dans le conteneur) + taille/poids avec inventaire + fusionner eau ?<br />
-			- Si dépot eau, doit-elle disparaitre ?<br />
-		</div>
-
-		<span class="titre_index">- Ordres :</span><br />
-		<div class="contenu_index">
-			- Bonus / Malus sur le temps, vigueur... (Surplus de ress / obj / surface / météo / etc....)<i>[Reste: Tout sauf surcharge]</i><br />
-			- Améliorer le résultat de l'ordre en utilisant des objets<br />
-			- Améliorer le résultat de l'ordre en rajoutant des ressources bonus<br />
-			- Lien pop-up détails complêt des ordres <br />
-		</div>
-
-		<span class="titre_index">- Ordres joueur :</span><br />
-		<div class="contenu_index">
-			- Détruire objet/ressource<br />
-
-			- Coma (attendre 6h pour récupérer 10% vigueur/satiété si inf 1%)<br />
-		</div>
-
-		<span class="titre_index">- Ordres batiments :</span><br />
-		<div class="contenu_index">
-			- Déconstruction de batiments <i>[Reste: Choix de refuser ressources]</i><br />
-
-		</div>
-
-		<span class="titre_index">- Ordres surface :</span><br />
-		<div class="contenu_index">
-			- <br />
-
-		</div>
-
-		<span class="titre_index">- Ordres intérieur :</span><br />
-		<div class="contenu_index">
-			- Up nv des batiments => Doublons des mobiliers => Garder anciens ou nouveaux ? => Choix joueur ou choix imposé ?<br />
-			- Modifier / Rajouter des mobiliers => Risque de doublons (voir ordre batiment)<br />
-			- Modifier sur plusieurs cases ?<br />
-		</div>
-
-		<span class="titre_index">- Inventions :</span><br />
-		<div class="contenu_index">
-			- Créer une suite logiques d'inventions<br />
-			- A utiliser pour forger les métiers<br />
-			- Séparer les inventions personnelles des inventions de village ?<br />
-			- Peuvent se transmettre (via bibliothèque) à particulier ou de village à village<br />
-			- Champs => Connaissance de la culture => Afficher info fourchette qui influencera l'effet || Augmenter l'effet lors de récolte / entretien<br />
-		</div>
 
 		<span class="titre_index">- Ergonomie :</span><br />
 		<div class="contenu_index">
@@ -549,12 +645,6 @@
 			- Nouvelle alerte en haut pour message important (combat, inventions etc...)<br />
 			- Toujours afficher le nom d'un batiment et pas son type<br />
 			- ordre_detail_multiple => Sauter cette étape et inclure un choix directement dans ordre_detail qui affichera le résultat en JS<br />
-		</div>
-
-		<span class="titre_index">- Carte :</span><br />
-		<div class="contenu_index">
-			- Les batiments doivent-il prendre plus d'une case ???<br />
-			- Balayage de la carte automatique pour améliorer/enlever les batiments/surface lié à l'usure automatique. [EN COURS]<br />
 		</div>
 
 		<span class="titre_index">- Design :</span><br />
@@ -591,8 +681,6 @@
 			- Actions herbe => grignoter de l'herbe => meuuuh !<br />
 			- Lié la qualité des baies a la qualité de la zone<br />
 			- Un batiment doit avoir 90% de ses pv pour etre construit ou amélioré<br />
-
 		</div>
-
 	</div>
 {% endblock %}
